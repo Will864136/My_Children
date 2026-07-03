@@ -101,8 +101,26 @@ const zhuazhouItems = [
   }
 ];
 
-// Global localization state
-let currentLang = localStorage.getItem("twins_party_lang") || "zh-TW";
+// Detect browser language and map it to our supported languages
+function detectBrowserLanguage() {
+  const browserLang = (navigator.language || navigator.userLanguage || "zh-TW").toLowerCase();
+  if (browserLang.startsWith("zh")) {
+    return "zh-TW";
+  }
+  if (browserLang.startsWith("ja")) {
+    return "ja";
+  }
+  if (browserLang.startsWith("th")) {
+    return "th";
+  }
+  if (browserLang.startsWith("it")) {
+    return "it";
+  }
+  return "en"; // Default to English for other international users
+}
+
+// Global localization state (prioritizing manual selection in localStorage, fallback to browser detection)
+let currentLang = localStorage.getItem("twins_party_lang") || detectBrowserLanguage();
 
 // Translation dictionaries
 const i18nDict = {
@@ -1053,6 +1071,12 @@ function initPredictionGame() {
     }
 
     card.addEventListener("click", () => {
+      // Trigger a bubble pop bounce animation
+      card.classList.add("bounce-effect");
+      setTimeout(() => {
+        card.classList.remove("bounce-effect");
+      }, 400);
+
       if (gender === 'boy') {
         const active = boyGrid.querySelector(".mat-item.selected");
         if (active) active.classList.remove("selected");
