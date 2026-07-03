@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="doc_title">隆隆 & 心心 一歲抓週派對邀請函</title>
+  <meta name="description" content="隆隆和心心即將滿一歲囉！誠摯邀請親朋好友於2026年7月11日前來參加他們的抓週儀式與溫馨聚會。">
+  <link rel="stylesheet" href="styles.css">
+  <!-- canvas-confetti library for RSVP completion celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Background Music Option (Optional / Decorative) -->
+  <div style="display:none;">
+    <audio id="bg-music" loop>
+      <source src="https://assets.mixkit.co/music/preview/mixkit-playful-kitty-143.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="container">
+    <!-- Language Switcher Bar -->
+    <div class="lang-selector-container">
+      <select class="lang-select" id="lang-select">
+        <option value="zh-TW">繁體中文</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="th">ภาษาไทย</option>
+        <option value="it">Italiano</option>
+      </select>
+    </div>
+
+    <!-- Hero Banner & Countdown -->
+    <header class="hero">
+      <div class="hero-badges">
+        <span class="badge-boy" id="hero-badge-boy" data-i18n="hero_boy_badge">👦🏻 哥哥 隆隆</span>
+        <span class="badge-girl" id="hero-badge-girl" data-i18n="hero_girl_badge">👧🏻 妹妹 心心</span>
+      </div>
+      <h1 class="hero-title" data-i18n="hero_title">隆隆 & 心心<br>1st Birthday Party</h1>
+      <p class="hero-subtitle" data-i18n="hero_subtitle">雙胞胎抓週週歲派對</p>
+
+      <div class="baby-avatars">
+        <div class="avatar-container">
+          <div class="avatar-wrapper boy">
+            <img class="avatar-img" src="son/00CADAA8-054A-489B-B391-5B5CFB463EAC_0.jpg" alt="隆隆" id="hero-boy-avatar">
+          </div>
+          <span class="avatar-name" id="hero-boy-name">馮宣翰 Jasper</span>
+          <span class="avatar-gender" data-i18n="hero_boy_role">哥哥 (Older Brother)</span>
+        </div>
+        <div class="avatar-container">
+          <div class="avatar-wrapper girl">
+            <img class="avatar-img" src="daughter/A7D913B1-6545-411E-B104-BA36E20C4EE5_0.jpg" alt="心心" id="hero-girl-avatar">
+          </div>
+          <span class="avatar-name" id="hero-girl-name">馮妍心 Serena</span>
+          <span class="avatar-gender" data-i18n="hero_girl_role">妹妹 (Younger Sister)</span>
+        </div>
+      </div>
+
+      <!-- Live Countdown -->
+      <div class="countdown-box">
+        <div class="countdown-item">
+          <span class="countdown-num num-font" id="days">00</span>
+          <span class="countdown-label" data-i18n="days_label">天</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-num num-font" id="hours">00</span>
+          <span class="countdown-label" data-i18n="hours_label">時</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-num num-font" id="minutes">00</span>
+          <span class="countdown-label" data-i18n="minutes_label">分</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-num num-font" id="seconds">00</span>
+          <span class="countdown-label" data-i18n="seconds_label">秒</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Invitation Card Text -->
+    <section id="invitation-intro">
+      <div class="card invitation-text">
+        <p data-i18n="invitation_greet">親愛的親朋好友：</p>
+        <p><span class="invitation-highlight" data-i18n="invitation_p1">不知不覺，隆隆和心心要滿一歲囉！👶🏻👶🏻</span></p>
+        <p data-i18n="invitation_p2">在這個充滿喜悅與重要紀念價值的日子裡，我們為兩個寶貝準備了熱鬧的抓週儀式與溫馨聚會。</p>
+        <p data-i18n="invitation_p3">誠摯地邀請您前來，一同見證這珍貴的時刻，為隆隆與心心送上最溫暖的祝福！</p>
+        
+        <div class="dress-code-badge" id="dress-code-box">
+          <!-- Transformed dynamically in script based on lang -->
+          👗 <strong data-i18n="dc_title">服裝主題 (Dress Code)</strong><br>
+          <span data-i18n="dc_desc">建議穿搭<strong>「白色系服裝」</strong>，讓我們一起以純淨的白色，為寶貝們留下最美的紀念！</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Twins Photo Gallery -->
+    <section id="gallery" class="gallery-section">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span data-i18n="gallery_title">成長點滴相簿</span>
+      </h2>
+      <p class="section-subtitle" data-i18n="gallery_subtitle">點擊照片可放大欣賞喔！</p>
+
+      <div class="gallery-tabs">
+        <button class="tab-btn active" data-tab="all" data-i18n="gallery_tab_all">全部照片</button>
+        <button class="tab-btn" data-tab="boy" data-i18n="gallery_tab_boy">隆隆 (Jasper)</button>
+        <button class="tab-btn" data-tab="girl" data-i18n="gallery_tab_girl">心心 (Serena)</button>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Javascript will inject images here -->
+      </div>
+      <button class="gallery-more-btn" id="load-more-btn" data-i18n="gallery_load_more">載入更多照片</button>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox">
+      <button class="lightbox-close" id="lightbox-close">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#10094;</button>
+      <div class="lightbox-content">
+        <img class="lightbox-img" id="lightbox-img" src="" alt="放大照片">
+      </div>
+      <button class="lightbox-nav lightbox-next" id="lightbox-next">&#10095;</button>
+    </div>
+
+    <!-- Prediction Game Mat -->
+    <section id="prediction-game">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+        <span data-i18n="game_title">抓週大預測</span>
+      </h2>
+      <p class="section-subtitle" data-i18n="game_subtitle">親友團站出來！預測隆隆和心心當天會抓到什麼物品呢？</p>
+
+      <div class="card">
+        <div class="prediction-area">
+          
+          <!-- Lóng-lóng Mat (Boy) -->
+          <div class="baby-mat-section boy-side" id="boy-prediction-section">
+            <div class="mat-header">
+              <img class="mat-header-avatar" src="son/2EB0EA70-BD49-4643-89A6-1077309987BF_0.jpg" alt="隆隆">
+              <div class="mat-header-info">
+                <h3 data-i18n="game_boy_mat_title">哥哥 馮宣翰 (Jasper) 的抓週地墊</h3>
+                <p data-i18n="game_boy_mat_desc">預測隆隆會抓中什麼</p>
+              </div>
+            </div>
+            
+            <!-- Items Selection -->
+            <div class="playmat-grid" id="boy-items-grid">
+              <!-- JS Injected Items -->
+            </div>
+
+            <!-- Vote results chart -->
+            <div class="vote-results-container" id="boy-results-chart" style="display:none;">
+              <!-- JS Injected Result Progress Bars -->
+            </div>
+          </div>
+
+          <!-- Xīn-xīn Mat (Girl) -->
+          <div class="baby-mat-section girl-side" id="girl-prediction-section">
+            <div class="mat-header">
+              <img class="mat-header-avatar" src="daughter/25F2AF7F-DFED-4A4F-BD39-91078463B674_0.jpg" alt="心心">
+              <div class="mat-header-info">
+                <h3 data-i18n="game_girl_mat_title">妹妹 馮妍心 (Serena) 的抓週地墊</h3>
+                <p data-i18n="game_girl_mat_desc">預測心心會抓中什麼</p>
+              </div>
+            </div>
+
+            <!-- Items Selection -->
+            <div class="playmat-grid" id="girl-items-grid">
+              <!-- JS Injected Items -->
+            </div>
+
+            <!-- Vote results chart -->
+            <div class="vote-results-container" id="girl-results-chart" style="display:none;">
+              <!-- JS Injected Result Progress Bars -->
+            </div>
+          </div>
+
+        </div>
+
+        <div class="vote-submit-bar">
+          <button class="vote-btn" id="submit-votes-btn" disabled data-i18n="game_submit_btn">送出我的預測</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Timeline -->
+    <section id="timeline">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        <span data-i18n="timeline_title">當日活動日程</span>
+      </h2>
+      <p class="section-subtitle" data-i18n="timeline_subtitle">派對流程安排，期待與大家共度歡樂時光</p>
+
+      <div class="timeline-container">
+        <!-- Event 1 -->
+        <div class="timeline-event">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 17.01V5c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v12.01c0 1.1-.9 1.99-2 1.99H4c-1.1 0-2-.89-2-1.99zM20 15c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v2h16v-2zM4 5v7h16V5H4z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-time num-font">12:00</div>
+            <div class="timeline-title" data-i18n="t1_title">賓客入場與饗宴開始 🍽️</div>
+            <div class="timeline-desc" data-i18n="t1_desc">親友陸續報到入座，現場備有美味精緻的餐點供大家享用與交流。</div>
+          </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="timeline-event">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-time num-font">12:30 - 14:30</div>
+            <div class="timeline-title" data-i18n="t2_title">精彩抓週儀式與互動同樂 🎉</div>
+            <div class="timeline-desc" data-i18n="t2_desc">隆隆與心心的抓週主秀登場！踩紅龜粿、敲智慧鑼，並看兩位寶貝會選中什麼寶物！期間將伴隨歡樂的猜謎與祝福活動。</div>
+          </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="timeline-event">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-time num-font">14:30 - 15:00</div>
+            <div class="timeline-title" data-i18n="t3_title">溫馨大合照與交流 📸</div>
+            <div class="timeline-desc" data-i18n="t3_desc">所有親朋好友與隆隆、心心一同拍攝珍貴的大合照，互道祝福，並贈送小禮物作為一歲生日的溫馨紀念。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP Reply Form -->
+    <section id="rsvp">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span data-i18n="rsvp_title">線上出席回條 (RSVP)</span>
+      </h2>
+      <p class="section-subtitle" data-i18n="rsvp_subtitle">期待您的蒞臨！請於派對前填寫回條，以利我們為您準備精緻餐點與安排座位</p>
+
+      <div class="card">
+        <div id="rsvp-form-wrapper">
+          <form class="rsvp-form-container" id="rsvp-form">
+            <!-- Name & Attendance Count -->
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="rsvp-name"><span data-i18n="form_name">賓客姓名</span> <span class="required">*</span></label>
+                <input class="form-control" type="text" id="rsvp-name" placeholder="請輸入您的姓名或家族稱呼" data-i18n-placeholder="form_name_placeholder" required>
+              </div>
+              <div class="form-group">
+                <label for="rsvp-count"><span data-i18n="form_count">出席人數</span> <span class="required">*</span></label>
+                <select class="form-control num-font" id="rsvp-count" required>
+                  <!-- Value mappings dynamically text loaded -->
+                  <option value="1" data-i18n="form_count_1">1 人</option>
+                  <option value="2" data-i18n="form_count_2">2 人</option>
+                  <option value="3" data-i18n="form_count_3">3 人</option>
+                  <option value="4" data-i18n="form_count_4">4 人</option>
+                  <option value="5" data-i18n="form_count_5">5 人</option>
+                  <option value="6" data-i18n="form_count_6">6人以上</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Attendance Choice & Baby Chair -->
+            <div class="form-group-row">
+              <div class="form-group">
+                <label data-i18n="form_attend">是否出席 <span class="required">*</span></label>
+                <div class="radio-group-container">
+                  <div class="radio-option">
+                    <input type="radio" id="rsvp-attend-yes" name="rsvp-attend" value="yes" checked>
+                    <label class="radio-label" for="rsvp-attend-yes" id="rsvp-attend-yes-label" data-i18n="form_attend_yes">🎉 會喔！準時赴約</label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="rsvp-attend-no" name="rsvp-attend" value="no">
+                    <label class="radio-label" for="rsvp-attend-no" id="rsvp-attend-no-label" data-i18n="form_attend_no">🥺 無法前往，但送上祝福</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" id="baby-chair-group">
+                <label for="rsvp-chairs" data-i18n="form_chairs">嬰兒椅需求</label>
+                <select class="form-control num-font" id="rsvp-chairs">
+                  <option value="0" data-i18n="form_chairs_0">不需要</option>
+                  <option value="1" data-i18n="form_chairs_1">1 張</option>
+                  <option value="2" data-i18n="form_chairs_2">2 張</option>
+                  <option value="3" data-i18n="form_chairs_3">3 張</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Diet habits -->
+            <div class="form-group" id="diet-group">
+              <label for="rsvp-diet" data-i18n="form_diet">飲食習慣與需求</label>
+              <select class="form-control" id="rsvp-diet">
+                <option value="葷食" data-i18n="form_diet_meat">皆為一般葷食</option>
+                <option value="素食" data-i18n="form_diet_vege">有素食需求 (請在下方備註說明人數)</option>
+                <option value="其他" data-i18n="form_diet_other">其他飲食需求 / 過敏 (請在下方備註說明)</option>
+              </select>
+            </div>
+
+            <!-- Wishes & Message -->
+            <div class="form-group">
+              <label for="rsvp-wishes" data-i18n="form_wishes">給寶貝們的祝福語或備註</label>
+              <textarea class="form-control" id="rsvp-wishes" rows="3" placeholder="在這裡寫下給隆隆、心心的生日祝福，或任何飲食與座位特殊安排備註喔！" data-i18n-placeholder="form_wishes_placeholder"></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <button class="rsvp-submit-btn" type="submit" id="rsvp-submit-btn">
+              <span data-i18n="form_submit_btn">送出出席回條</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Success Message Pane (Hidden Initially) -->
+        <div id="rsvp-success-wrapper" style="display:none;">
+          <div class="rsvp-success-card">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            </div>
+            <h3 data-i18n="success_title">回條已成功送出！</h3>
+            <p data-i18n="success_desc">我們已收到您的回覆，非常期待與您在派對見面！❤️</p>
+            <div class="success-wishes" id="success-wishes-show"></div>
+            <button class="edit-rsvp-btn" id="edit-rsvp-btn" data-i18n="success_edit_btn">修改回覆資料</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Location & Calendar -->
+    <section id="location-calendar">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span data-i18n="loc_title">派對時間與交通</span>
+      </h2>
+      <p class="section-subtitle" data-i18n="loc_subtitle">請將時間記錄在您的日曆中，期待您光臨 Amour 373 Cafe</p>
+
+      <div class="card">
+        <!-- Event Details Cards -->
+        <div class="info-details-box">
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+            </div>
+            <div class="info-text">
+              <h4 data-i18n="loc_time_label">活動時間</h4>
+              <p class="num-font" data-i18n="loc_time_desc">2026年7月11日 (六)<br>12:00 - 15:00</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="info-text">
+              <h4 data-i18n="loc_place_label">派對地點</h4>
+              <p><span data-i18n="loc_place_desc">Amour 373 Cafe 2樓</span><br><span data-i18n="loc_address_desc">桃園市平鎮區廣仁里延平路二段373號</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px; font-size:0.9rem; color:var(--color-text-light); text-align:center;" id="traffic-reminder">
+          💡 <strong data-i18n="loc_reminder_title">溫馨小提醒：</strong><span data-i18n="loc_reminder_desc">餐廳周邊設有停車空間，建議您可以稍微提早出門，以便順利停車與入場。🚗</span>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="action-buttons">
+          <a class="action-btn map-btn" href="https://maps.google.com/?q=桃園市平鎮區廣仁里延平路二段373號" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+            <span data-i18n="btn_navigation">一鍵開啟 Google 地圖導航</span>
+          </a>
+          <button class="action-btn cal-btn" id="add-calendar-btn">
+            <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+            <span data-i18n="btn_add_calendar">加到手機日曆</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hidden Back-office Trigger -->
+    <div class="admin-trigger" id="admin-trigger" data-i18n="admin_trigger_text">
+      🔒 家長後台管理入口 (僅供家長查看出席統計)
+    </div>
+
+    <!-- Admin back office modal -->
+    <div class="admin-modal" id="admin-modal">
+      <div class="admin-box">
+        <div class="admin-header">
+          <h3 data-i18n="admin_title">家長出席統計後台</h3>
+          <button class="admin-close" id="admin-close-btn">&times;</button>
+        </div>
+        
+        <!-- Auth wrapper -->
+        <div id="admin-auth-wrapper" class="admin-auth">
+          <p data-i18n="admin_auth_desc">請輸入密碼以查看賓客出席資料與投票統計結果</p>
+          <div class="form-group" style="max-width:300px; margin: 10px auto;">
+            <input class="form-control" type="password" id="admin-password" placeholder="輸入密碼 (預設: 1207)" data-i18n-placeholder="admin_pw_placeholder">
+          </div>
+          <button class="vote-btn" id="admin-login-btn" data-i18n="admin_login_btn">登入管理後台</button>
+        </div>
+
+        <!-- Content wrapper -->
+        <div id="admin-content-wrapper" class="admin-content" style="display:none;">
+          <div class="admin-stats">
+            <div class="admin-stat-card">
+              <span class="admin-stat-num" id="stat-total-attend">0</span>
+              <span class="admin-stat-label" data-i18n="admin_stat_total">出席總人數</span>
+            </div>
+            <div class="admin-stat-card">
+              <span class="admin-stat-num" id="stat-total-chairs">0</span>
+              <span class="admin-stat-label" data-i18n="admin_stat_chairs">嬰兒椅需求</span>
+            </div>
+            <div class="admin-stat-card">
+              <span class="admin-stat-num" id="stat-total-forms">0</span>
+              <span class="admin-stat-label" data-i18n="admin_stat_forms">已回覆表單數</span>
+            </div>
+          </div>
+
+          <h4 style="margin-bottom:10px;" data-i18n="admin_list_title">回條資料明細</h4>
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th data-i18n="admin_th_name">姓名</th>
+                  <th data-i18n="admin_th_attend">出席</th>
+                  <th data-i18n="admin_th_count">人數</th>
+                  <th data-i18n="admin_th_chairs">嬰兒椅</th>
+                  <th data-i18n="admin_th_diet">飲食</th>
+                  <th data-i18n="admin_th_wishes">留言祝福</th>
+                </tr>
+              </thead>
+              <tbody id="admin-table-body">
+                <!-- JS dynamically added rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="admin-actions">
+            <button class="admin-btn clear-btn" id="admin-clear-btn" data-i18n="admin_btn_clear">清空所有回條</button>
+            <button class="admin-btn download-btn" id="admin-download-btn" data-i18n="admin_btn_csv">匯出 CSV 檔</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p data-i18n="footer_copy">隆隆 & 心心 一歲抓週派對邀請函 © 2026</p>
+      <p data-i18n="footer_wish">期待您的蒞臨！</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
