@@ -132,8 +132,8 @@ const i18nDict = {
     doc_title: "隆隆 & 心心 一歲抓週派對邀請函",
     hero_boy_badge: "👦🏻 哥哥 隆隆",
     hero_girl_badge: "👧🏻 妹妹 心心",
-    hero_title: "隆隆 & 心心<br>1st Birthday Party",
-    hero_subtitle: "雙胞胎抓週週歲派對",
+    hero_title: "隆隆 & 心心 一歲抓週週歲派對",
+    hero_subtitle: "",
     hero_boy_role: "哥哥 (Older Brother)",
     hero_girl_role: "妹妹 (Younger Sister)",
     days_label: "天",
@@ -262,8 +262,8 @@ const i18nDict = {
     doc_title: "Jasper & Serena 1st Birthday Party Invitation",
     hero_boy_badge: "👦🏻 Jasper (Older Brother)",
     hero_girl_badge: "👧🏻 Serena (Younger Sister)",
-    hero_title: "Jasper & Serena<br>1st Birthday Party",
-    hero_subtitle: "Twins Zhuazhou Celebration",
+    hero_title: "Jasper & Serena 1st Birthday Party",
+    hero_subtitle: "",
     hero_boy_role: "Brother (Jasper)",
     hero_girl_role: "Sister (Serena)",
     days_label: "Days",
@@ -392,8 +392,8 @@ const i18nDict = {
     doc_title: "Jasper & Serena 1歳のお誕生日会 招待状",
     hero_boy_badge: "👦🏻 お兄ちゃん 隆隆 (Jasper)",
     hero_girl_badge: "👧🏻 妹 馮妍心 (Serena)",
-    hero_title: "Jasper & Serena<br>1st Birthday Party",
-    hero_subtitle: "双子の「選び取り」満1歳パーティー",
+    hero_title: "Jasper & Serena 1歳お誕生日会",
+    hero_subtitle: "",
     hero_boy_role: "兄 (Jasper)",
     hero_girl_role: "妹 (Serena)",
     days_label: "日",
@@ -522,8 +522,8 @@ const i18nDict = {
     doc_title: "การ์ดเชิญงานครบรอบ 1 ปี ของ Jasper & Serena",
     hero_boy_badge: "👦🏻 พี่ชาย Jasper",
     hero_girl_badge: "👧🏻 น้องสาว Serena",
-    hero_title: "Jasper & Serena<br>1st Birthday Party",
-    hero_subtitle: "พิธีจับเสี่ยงทาย (Zhuazhou) ฝาแฝดครบรอบหนึ่งปี",
+    hero_title: "ปาร์ตี้วันเกิด 1 ขวบ ของ Jasper & Serena",
+    hero_subtitle: "",
     hero_boy_role: "พี่ชาย (Jasper)",
     hero_girl_role: "น้องสาว (Serena)",
     days_label: "วัน",
@@ -652,8 +652,8 @@ const i18nDict = {
     doc_title: "Invito al 1° Compleanno di Jasper & Serena",
     hero_boy_badge: "👦🏻 Fratello Maggiore Jasper",
     hero_girl_badge: "👧🏻 Sorella Minore Serena",
-    hero_title: "Jasper & Serena<br>1st Birthday Party",
-    hero_subtitle: "Festa del primo compleanno e rito Zhuazhou",
+    hero_title: "1° Compleanno di Jasper & Serena",
+    hero_subtitle: "",
     hero_boy_role: "Fratello (Jasper)",
     hero_girl_role: "Sorella (Serena)",
     days_label: "Giorni",
@@ -797,6 +797,9 @@ const MOCK_VOTES_KEY_BOY = "zhuazhou_votes_boy_v1";
 const MOCK_VOTES_KEY_GIRL = "zhuazhou_votes_girl_v1";
 const USER_VOTED_KEY = "zhuazhou_user_voted_v1";
 const RSVPS_KEY = "zhuazhou_rsvps_v1";
+
+// Google Sheets Integration Web App URL (Paste Apps Script URL here)
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwkpwdDyz64qdj-iE4QKZe-5L1B1xuV2IGOcHnS8J1EgmFyVTdoHnf_snsFIFF3vP-H/exec";
 
 // Initialize App
 document.addEventListener("DOMContentLoaded", () => {
@@ -1319,6 +1322,18 @@ function initRSVPForm() {
 
     localStorage.setItem(RSVPS_KEY, JSON.stringify(rsvps));
 
+    // Send to Google Sheets if configured
+    if (GOOGLE_SHEET_URL) {
+      fetch(GOOGLE_SHEET_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(rsvpObj)
+      }).catch(err => console.error("Error sending to Google Sheet:", err));
+    }
+
     triggerConfettiExplosion();
 
     wishesShow.innerText = `「${rsvpObj.wishes}」`;
@@ -1468,6 +1483,8 @@ function initAdminBackOffice() {
   const contentWrapper = document.getElementById("admin-content-wrapper");
   const loginBtn = document.getElementById("admin-login-btn");
   const passwordInput = document.getElementById("admin-password");
+  
+  let currentLoadedRsvps = [];
 
   const statTotalAttend = document.getElementById("stat-total-attend");
   const statTotalChairs = document.getElementById("stat-total-chairs");
@@ -1505,8 +1522,29 @@ function initAdminBackOffice() {
   });
 
   function loadAdminDashboardData() {
-    const rsvps = JSON.parse(localStorage.getItem(RSVPS_KEY)) || [];
-    
+    if (GOOGLE_SHEET_URL) {
+      tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--color-text-light);">Loading data from Google Sheets...</td></tr>`;
+      
+      fetch(GOOGLE_SHEET_URL)
+        .then(res => res.json())
+        .then(data => {
+          currentLoadedRsvps = data;
+          renderTableData(data);
+        })
+        .catch(err => {
+          console.error("Error fetching from Google Sheet:", err);
+          const rsvps = JSON.parse(localStorage.getItem(RSVPS_KEY)) || [];
+          currentLoadedRsvps = rsvps;
+          renderTableData(rsvps);
+        });
+    } else {
+      const rsvps = JSON.parse(localStorage.getItem(RSVPS_KEY)) || [];
+      currentLoadedRsvps = rsvps;
+      renderTableData(rsvps);
+    }
+  }
+
+  function renderTableData(rsvps) {
     let totalAttendCount = 0;
     let totalChairsCount = 0;
     let formCount = rsvps.length;
@@ -1544,8 +1582,8 @@ function initAdminBackOffice() {
 
   clearBtn.addEventListener("click", () => {
     const clearConfirmMsg = currentLang === 'zh-TW'
-      ? "確定要清空所有親友回條資料嗎？此操作不可逆！"
-      : "Are you sure you want to clear all RSVPs? This action cannot be undone!";
+      ? "確定要清空本機的所有親友回條資料嗎？此操作不可逆！"
+      : "Are you sure you want to clear all local RSVPs? This action cannot be undone!";
     if (confirm(clearConfirmMsg)) {
       localStorage.removeItem(RSVPS_KEY);
       loadAdminDashboardData();
@@ -1553,8 +1591,7 @@ function initAdminBackOffice() {
   });
 
   downloadBtn.addEventListener("click", () => {
-    const rsvps = JSON.parse(localStorage.getItem(RSVPS_KEY)) || [];
-    if (rsvps.length === 0) {
+    if (currentLoadedRsvps.length === 0) {
       alert("No data to export!");
       return;
     }
@@ -1563,7 +1600,7 @@ function initAdminBackOffice() {
       "\ufeffName,Attend,Guests,Baby Chairs,Diet,Wishes,Timestamp"
     ];
 
-    rsvps.forEach(r => {
+    currentLoadedRsvps.forEach(r => {
       const columns = [
         `"${r.name.replace(/"/g, '""')}"`,
         r.attend === 'yes' ? 'Yes' : 'No',

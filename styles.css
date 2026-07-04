@@ -140,6 +140,94 @@ h1, h2, h3, h4 {
 .star-2 { top: 62%; left: 3%; animation: pulse-star 5s ease-in-out infinite 1s; font-size: 1.3rem; }
 .star-3 { bottom: 32%; right: 4%; animation: pulse-star 4.5s ease-in-out infinite 2s; font-size: 1.5rem; }
 
+/* Cartoon Integrated UI Decorations */
+.mickey-headband {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.12));
+  transition: var(--transition-smooth);
+}
+
+.kitty-bow-decor {
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  z-index: 10;
+  pointer-events: none;
+  transform: rotate(15deg);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.12));
+  transition: var(--transition-smooth);
+}
+
+.avatar-wrapper:hover .mickey-headband {
+  transform: translateX(-50%) translateY(-3px) scale(1.05);
+}
+
+.avatar-wrapper:hover .kitty-bow-decor {
+  transform: rotate(18deg) scale(1.05);
+}
+
+.totoro-peeking {
+  position: absolute;
+  top: -24px;
+  left: 10px;
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+}
+
+.alien-peeking {
+  position: absolute;
+  top: -24px;
+  right: 10px;
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+}
+
+.totoro-stamp {
+  position: absolute;
+  bottom: -15px;
+  right: -10px;
+  pointer-events: none;
+  opacity: 0.12;
+  transform: rotate(-10deg);
+}
+
+@media (max-width: 576px) {
+  .mickey-headband {
+    top: -24px;
+  }
+  .mickey-headband svg {
+    width: 66px;
+    height: 33px;
+  }
+  .kitty-bow-decor {
+    top: -10px;
+    right: -8px;
+  }
+  .kitty-bow-decor svg {
+    width: 42px;
+    height: 42px;
+  }
+  .totoro-peeking {
+    top: -20px;
+    left: 4px;
+  }
+  .totoro-peeking svg, .alien-peeking svg {
+    width: 40px;
+    height: 24px;
+  }
+  .alien-peeking {
+    top: -20px;
+    right: 4px;
+  }
+}
+
 /* Responsive decorations */
 @media (max-width: 992px) {
   .decor-item {
@@ -302,8 +390,8 @@ section {
 }
 
 .avatar-wrapper {
-  width: 140px;
-  height: 140px;
+  width: 220px;
+  height: 220px;
   border-radius: 50% 45% 50% 48% / 48% 50% 45% 50%; /* Playful egg-shape */
   padding: 6px;
   box-shadow: var(--shadow-soft);
@@ -351,8 +439,8 @@ section {
 
 @media (max-width: 576px) {
   .avatar-wrapper {
-    width: 110px;
-    height: 110px;
+    width: 140px;
+    height: 140px;
   }
   .hero-title {
     font-size: 2rem;
