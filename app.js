@@ -1174,8 +1174,7 @@ function initPredictionGame() {
 
     const titleText = dict.vote_chart_title || "預測統計結果";
     const babyNameText = gender === 'boy' ? "Jasper" : "Serena";
-    const tagText = dict.tag_voted || "選這";
-    const genderTagText = gender === 'boy' ? (currentLang === 'zh-TW' ? '弟弟' : 'Jasper') : (currentLang === 'zh-TW' ? '姊姊' : 'Serena');
+
 
     containerEl.innerHTML = `
       <h4 style="margin-bottom:10px; font-size:1rem; border-bottom:1px dashed var(--color-border); padding-bottom:5px;">
@@ -1212,7 +1211,6 @@ function initPredictionGame() {
         </div>
         <span class="result-percent num-font">
           ${res.percent}%
-          ${isUserChoice ? `<span class="your-vote-tag">${genderTagText} ${tagText}</span>` : ''}
         </span>
       `;
       containerEl.appendChild(row);
