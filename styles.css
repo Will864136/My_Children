@@ -955,12 +955,20 @@ section {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--color-text-dark);
+  line-height: 1.25;
+  margin-top: 4px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .mat-item-job {
   font-size: 0.7rem;
   color: var(--color-text-light);
   font-weight: 500;
+  line-height: 1.2;
+  margin-top: 2px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Selected state - Bubble Pop effect */
@@ -1066,10 +1074,13 @@ section {
 }
 
 .result-label-wrapper {
-  width: 140px;
+  width: 155px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 8px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .result-icon {
@@ -1705,4 +1716,25 @@ footer {
 footer p {
   margin-bottom: 5px;
   font-weight: 500;
+}
+
+@media (max-width: 576px) {
+  .result-label-wrapper {
+    width: 110px;
+  }
+  .result-text-label {
+    font-size: 0.8rem;
+  }
+  .result-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .result-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  .result-percent {
+    width: 50px;
+    font-size: 0.78rem;
+  }
 }

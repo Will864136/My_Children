@@ -223,6 +223,8 @@ const i18nDict = {
     admin_th_count: "人數",
     admin_th_chairs: "嬰兒椅",
     admin_th_diet: "飲食",
+    admin_th_pred_boy: "哥哥預測",
+    admin_th_pred_girl: "妹妹預測",
     admin_th_wishes: "留言祝福",
     admin_btn_clear: "清空所有回條",
     admin_btn_csv: "匯出 CSV 檔",
@@ -353,6 +355,8 @@ const i18nDict = {
     admin_th_count: "Guests",
     admin_th_chairs: "Chairs",
     admin_th_diet: "Diet",
+    admin_th_pred_boy: "Predict Boy",
+    admin_th_pred_girl: "Predict Girl",
     admin_th_wishes: "Blessings & Notes",
     admin_btn_clear: "Clear All Data",
     admin_btn_csv: "Export CSV",
@@ -483,6 +487,8 @@ const i18nDict = {
     admin_th_count: "人数",
     admin_th_chairs: "椅子",
     admin_th_diet: "食事",
+    admin_th_pred_boy: "兄の予測",
+    admin_th_pred_girl: "妹の予測",
     admin_th_wishes: "メッセージ・備考",
     admin_btn_clear: "すべてのデータを消去",
     admin_btn_csv: "CSVとして書き出し",
@@ -613,6 +619,8 @@ const i18nDict = {
     admin_th_count: "ผู้ร่วม",
     admin_th_chairs: "เก้าอี้เด็ก",
     admin_th_diet: "อาหาร",
+    admin_th_pred_boy: "ทายพี่ชาย",
+    admin_th_pred_girl: "ทายน้องสาว",
     admin_th_wishes: "คำอวยพร/หมายเหตุ",
     admin_btn_clear: "ล้างข้อมูลทั้งหมด",
     admin_btn_csv: "ดาวน์โหลดไฟล์ CSV",
@@ -743,6 +751,8 @@ const i18nDict = {
     admin_th_count: "Ospiti",
     admin_th_chairs: "Sedie",
     admin_th_diet: "Menu",
+    admin_th_pred_boy: "Pred. Fratello",
+    admin_th_pred_girl: "Pred. Sorella",
     admin_th_wishes: "Auguri e Note",
     admin_btn_clear: "Elimina Tutti i Dati",
     admin_btn_csv: "Esporta in CSV",
@@ -1030,13 +1040,15 @@ function initPredictionGame() {
   let girlVotes = JSON.parse(localStorage.getItem(MOCK_VOTES_KEY_GIRL));
   let userVoteState = JSON.parse(localStorage.getItem(USER_VOTED_KEY));
 
+  const initialZeroVotes = { key: 0, camera: 0, chemistry: 0, mixer: 0, tools: 0, blocks: 0, airplane: 0, abacus: 0, stethoscope: 0, ball: 0 };
+
   if (!boyVotes) {
-    boyVotes = { key: 32, camera: 18, chemistry: 12, mixer: 15, tools: 24, blocks: 20, airplane: 28, abacus: 22, stethoscope: 35, ball: 25 };
+    boyVotes = { ...initialZeroVotes };
     localStorage.setItem(MOCK_VOTES_KEY_BOY, JSON.stringify(boyVotes));
   }
 
   if (!girlVotes) {
-    girlVotes = { key: 18, camera: 29, chemistry: 25, mixer: 35, tools: 12, blocks: 22, airplane: 15, abacus: 10, stethoscope: 18, ball: 28 };
+    girlVotes = { ...initialZeroVotes };
     localStorage.setItem(MOCK_VOTES_KEY_GIRL, JSON.stringify(girlVotes));
   }
 
@@ -1214,6 +1226,38 @@ function initPredictionGame() {
     }, 100);
   }
 
+  function loadRealVotesFromSheet() {
+    if (GOOGLE_SHEET_URL) {
+      fetch(GOOGLE_SHEET_URL)
+        .then(res => res.json())
+        .then(data => {
+          const realBoyVotes = { ...initialZeroVotes };
+          const realGirlVotes = { ...initialZeroVotes };
+          
+          data.forEach(r => {
+            if (r.predictBoy) {
+              const item = zhuazhouItems.find(i => i18nDict["zh-TW"][i.labelKey] === r.predictBoy || i.id === r.predictBoy);
+              if (item) realBoyVotes[item.id]++;
+            }
+            if (r.predictGirl) {
+              const item = zhuazhouItems.find(i => i18nDict["zh-TW"][i.labelKey] === r.predictGirl || i.id === r.predictGirl);
+              if (item) realGirlVotes[item.id]++;
+            }
+          });
+          
+          boyVotes = realBoyVotes;
+          girlVotes = realGirlVotes;
+          localStorage.setItem(MOCK_VOTES_KEY_BOY, JSON.stringify(boyVotes));
+          localStorage.setItem(MOCK_VOTES_KEY_GIRL, JSON.stringify(girlVotes));
+          
+          if (userVoteState) {
+            showResults();
+          }
+        })
+        .catch(err => console.error("Error loading real votes:", err));
+    }
+  }
+
   // Cache object references globally for language updates
   globalPredictionModule = {
     showResults,
@@ -1227,6 +1271,9 @@ function initPredictionGame() {
   } else {
     renderMatGrids();
   }
+
+  // Fetch real-time predictions from Google Sheets if configured
+  loadRealVotesFromSheet();
 }
 
 // Function triggered when language switcher updates
@@ -1302,6 +1349,32 @@ function initRSVPForm() {
             ? 'สุขสันต์วันเกิด ขอให้มีสุขภาพแข็งแรงโตไวๆ นะครับ!' 
             : 'Buon compleanno! Crescete sani e felici!')));
 
+    // Grab prediction selections
+    let predictBoy = '無';
+    let predictGirl = '無';
+
+    if (selectedBoyItem) {
+      const itemDetail = zhuazhouItems.find(item => item.id === selectedBoyItem);
+      if (itemDetail) predictBoy = i18nDict["zh-TW"][itemDetail.labelKey] || itemDetail.id;
+    } else {
+      const savedVotes = JSON.parse(localStorage.getItem(USER_VOTED_KEY));
+      if (savedVotes && savedVotes.boyItem) {
+        const itemDetail = zhuazhouItems.find(item => item.id === savedVotes.boyItem);
+        if (itemDetail) predictBoy = i18nDict["zh-TW"][itemDetail.labelKey] || itemDetail.id;
+      }
+    }
+
+    if (selectedGirlItem) {
+      const itemDetail = zhuazhouItems.find(item => item.id === selectedGirlItem);
+      if (itemDetail) predictGirl = i18nDict["zh-TW"][itemDetail.labelKey] || itemDetail.id;
+    } else {
+      const savedVotes = JSON.parse(localStorage.getItem(USER_VOTED_KEY));
+      if (savedVotes && savedVotes.girlItem) {
+        const itemDetail = zhuazhouItems.find(item => item.id === savedVotes.girlItem);
+        if (itemDetail) predictGirl = i18nDict["zh-TW"][itemDetail.labelKey] || itemDetail.id;
+      }
+    }
+
     const rsvpObj = {
       name,
       attend: attendVal,
@@ -1309,6 +1382,8 @@ function initRSVPForm() {
       chairs: attendVal === 'yes' ? chairs : 0,
       diet: attendVal === 'yes' ? diet : '無',
       wishes: wishes || defaultBlessing,
+      predictBoy,
+      predictGirl,
       timestamp: new Date().toLocaleString()
     };
 
@@ -1523,7 +1598,7 @@ function initAdminBackOffice() {
 
   function loadAdminDashboardData() {
     if (GOOGLE_SHEET_URL) {
-      tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--color-text-light);">Loading data from Google Sheets...</td></tr>`;
+      tableBody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:var(--color-text-light);">Loading data from Google Sheets...</td></tr>`;
       
       fetch(GOOGLE_SHEET_URL)
         .then(res => res.json())
@@ -1564,7 +1639,9 @@ function initAdminBackOffice() {
         <td class="num-font">${r.attend === 'yes' ? r.count : '-'}</td>
         <td class="num-font">${r.attend === 'yes' ? r.chairs : '-'}</td>
         <td>${r.attend === 'yes' ? r.diet : '-'}</td>
-        <td style="color:var(--color-text-light); font-size:0.8rem; max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${r.wishes}">
+        <td>${r.predictBoy || '-'}</td>
+        <td>${r.predictGirl || '-'}</td>
+        <td style="color:var(--color-text-light); font-size:0.8rem; max-width:180px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${r.wishes}">
           ${r.wishes}
         </td>
       `;
@@ -1572,7 +1649,7 @@ function initAdminBackOffice() {
     });
 
     if (rsvps.length === 0) {
-      tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--color-text-light);">No data.</td></tr>`;
+      tableBody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:var(--color-text-light);">No data.</td></tr>`;
     }
 
     statTotalAttend.innerText = totalAttendCount;
@@ -1597,7 +1674,7 @@ function initAdminBackOffice() {
     }
 
     const csvRows = [
-      "\ufeffName,Attend,Guests,Baby Chairs,Diet,Wishes,Timestamp"
+      "\ufeffName,Attend,Guests,Baby Chairs,Diet,Predict Boy,Predict Girl,Wishes,Timestamp"
     ];
 
     currentLoadedRsvps.forEach(r => {
@@ -1607,6 +1684,8 @@ function initAdminBackOffice() {
         r.attend === 'yes' ? r.count : 0,
         r.attend === 'yes' ? r.chairs : 0,
         `"${(r.diet || '').replace(/"/g, '""')}"`,
+        `"${(r.predictBoy || '無').replace(/"/g, '""')}"`,
+        `"${(r.predictGirl || '無').replace(/"/g, '""')}"`,
         `"${(r.wishes || '').replace(/"/g, '""')}"`,
         r.timestamp
       ];
