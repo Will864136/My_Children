@@ -1040,13 +1040,15 @@ function initPredictionGame() {
   let girlVotes = JSON.parse(localStorage.getItem(MOCK_VOTES_KEY_GIRL));
   let userVoteState = JSON.parse(localStorage.getItem(USER_VOTED_KEY));
 
+  const initialZeroVotes = { key: 0, camera: 0, chemistry: 0, mixer: 0, tools: 0, blocks: 0, airplane: 0, abacus: 0, stethoscope: 0, ball: 0 };
+
   if (!boyVotes) {
-    boyVotes = { key: 32, camera: 18, chemistry: 12, mixer: 15, tools: 24, blocks: 20, airplane: 28, abacus: 22, stethoscope: 35, ball: 25 };
+    boyVotes = { ...initialZeroVotes };
     localStorage.setItem(MOCK_VOTES_KEY_BOY, JSON.stringify(boyVotes));
   }
 
   if (!girlVotes) {
-    girlVotes = { key: 18, camera: 29, chemistry: 25, mixer: 35, tools: 12, blocks: 22, airplane: 15, abacus: 10, stethoscope: 18, ball: 28 };
+    girlVotes = { ...initialZeroVotes };
     localStorage.setItem(MOCK_VOTES_KEY_GIRL, JSON.stringify(girlVotes));
   }
 
@@ -1224,6 +1226,38 @@ function initPredictionGame() {
     }, 100);
   }
 
+  function loadRealVotesFromSheet() {
+    if (GOOGLE_SHEET_URL) {
+      fetch(GOOGLE_SHEET_URL)
+        .then(res => res.json())
+        .then(data => {
+          const realBoyVotes = { ...initialZeroVotes };
+          const realGirlVotes = { ...initialZeroVotes };
+          
+          data.forEach(r => {
+            if (r.predictBoy) {
+              const item = zhuazhouItems.find(i => i18nDict["zh-TW"][i.labelKey] === r.predictBoy || i.id === r.predictBoy);
+              if (item) realBoyVotes[item.id]++;
+            }
+            if (r.predictGirl) {
+              const item = zhuazhouItems.find(i => i18nDict["zh-TW"][i.labelKey] === r.predictGirl || i.id === r.predictGirl);
+              if (item) realGirlVotes[item.id]++;
+            }
+          });
+          
+          boyVotes = realBoyVotes;
+          girlVotes = realGirlVotes;
+          localStorage.setItem(MOCK_VOTES_KEY_BOY, JSON.stringify(boyVotes));
+          localStorage.setItem(MOCK_VOTES_KEY_GIRL, JSON.stringify(girlVotes));
+          
+          if (userVoteState) {
+            showResults();
+          }
+        })
+        .catch(err => console.error("Error loading real votes:", err));
+    }
+  }
+
   // Cache object references globally for language updates
   globalPredictionModule = {
     showResults,
@@ -1237,6 +1271,9 @@ function initPredictionGame() {
   } else {
     renderMatGrids();
   }
+
+  // Fetch real-time predictions from Google Sheets if configured
+  loadRealVotesFromSheet();
 }
 
 // Function triggered when language switcher updates
