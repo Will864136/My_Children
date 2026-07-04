@@ -520,6 +520,35 @@ section {
 
 .gallery-item.boy { border-color: var(--color-boy-primary); }
 .gallery-item.girl { border-color: var(--color-girl-primary); }
+.gallery-item.both { border-color: #E8D7FF; } /* Soft pastel purple mix of pink & blue */
+
+/* What is Zhuazhou Card Style */
+.intro-card {
+  background-color: #FFFDF9;
+  border-color: var(--color-gold-secondary) !important;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.intro-badge {
+  display: inline-block;
+  background-color: var(--color-gold-light);
+  color: var(--color-gold-dark);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: var(--font-title);
+  margin-bottom: 15px;
+}
+.intro-text-desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text-dark);
+  text-align: justify;
+  text-justify: inter-word;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
 .gallery-item img {
   width: 100%;

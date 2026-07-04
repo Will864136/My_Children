@@ -1,38 +1,42 @@
 // Photo Arrays
 const daughterPhotos = [
-  "daughter/25F2AF7F-DFED-4A4F-BD39-91078463B674_0.jpg",
-  "daughter/39F61E1B-B8CD-4205-881A-6195F7A85E66_0.jpg",
-  "daughter/3D4BC7C5-5D9C-4B11-BE2F-1E85CF5C1447_0.jpg",
-  "daughter/4FC12C0A-4826-4891-ABE8-A932000C0C94_0.jpg",
-  "daughter/5292DCDE-7CF7-4390-A857-15384734EE45_0.jpg",
-  "daughter/60000B88-00CA-4974-A9B9-234EF0109311_0.jpg",
-  "daughter/62CB457A-00EF-44A5-848B-517B8A6E458C_0.jpg",
-  "daughter/89A705E1-0665-445C-A9AF-00FE29A6367D_0.jpg",
-  "daughter/A7D913B1-6545-411E-B104-BA36E20C4EE5_0.jpg",
-  "daughter/B4138F03-A5FB-43D4-9096-6645F41A8CEF_0.jpg",
-  "daughter/B4E54C92-556C-4ADB-A149-7265C76CC8B1_0.jpg",
-  "daughter/ED267838-DBF1-4D10-B934-355362BF6069_0.jpg"
+  "new/daughter/5D17D33F-90D5-4B62-9527-1789944AAC63.jpg",
+  "new/daughter/S__63488008_0.jpg",
+  "new/daughter/S__63488012_0.jpg",
+  "new/daughter/S__63488014_0.jpg",
+  "new/daughter/S__63488018_0.jpg",
+  "new/daughter/S__63488019_0.jpg",
+  "new/daughter/S__63488022_0.jpg",
+  "new/daughter/S__63488024_0.jpg",
+  "new/daughter/S__63488025_0.jpg",
+  "new/daughter/S__63488028_0.jpg"
 ];
 
 const sonPhotos = [
-  "son/00CADAA8-054A-489B-B391-5B5CFB463EAC_0.jpg",
-  "son/19B8F9CB-7086-4C57-ACB6-2B1522935C89_0.jpg",
-  "son/2EB0EA70-BD49-4643-89A6-1077309987BF_0.jpg",
-  "son/4D13FB26-F04E-4492-88AF-E72D425A2F43_0.jpg",
-  "son/50003046-9C65-43BD-8603-68993BFA40FE_0.jpg",
-  "son/805B3A54-E9BE-4EC0-A15D-8B9F7708650C_0.jpg",
-  "son/A6CE8C95-1058-4A23-89FB-E6A73D9950B7_0.jpg",
-  "son/ADA7821B-BA47-4659-A795-F66E7B99B5E9_0.jpg",
-  "son/B77345B5-BA70-48F4-A897-E86F52E955EA_0.jpg",
-  "son/DBC95337-9026-42EF-ACAB-80C28D0E0011_0.jpg",
-  "son/DC84775C-C3F4-404B-AF90-639268E7B4F8_0.jpg",
-  "son/DD25EFE6-4B39-4E94-A4D3-2F3A04785C31_0.jpg"
+  "new/son/S__63488009_0.jpg",
+  "new/son/S__63488013_0.jpg",
+  "new/son/S__63488015_0.jpg",
+  "new/son/S__63488017_0.jpg",
+  "new/son/S__63488020_0.jpg",
+  "new/son/S__63488021_0.jpg",
+  "new/son/S__63488023_0.jpg",
+  "new/son/S__63488026_0.jpg",
+  "new/son/S__63488029_0.jpg",
+  "new/son/S__63488031_0.jpg"
+];
+
+const bothPhotos = [
+  "new/both/20DDABEB-B011-41D3-9753-4BDF061B38BE_0.jpg",
+  "new/both/227E0A80-F62E-49BB-8D57-4C3267C65FAE_0.jpg",
+  "new/both/6ED1F160-A4B1-4189-B3F8-9517B8294C6C_0.jpg",
+  "new/both/7B83BBD4-DC13-421E-9B9F-5E46FD8A58C9_0.jpg"
 ];
 
 // Combine all photos dynamically (alternating for visual variety)
 const allPhotos = [];
-const maxPhotosCount = Math.max(sonPhotos.length, daughterPhotos.length);
+const maxPhotosCount = Math.max(sonPhotos.length, daughterPhotos.length, bothPhotos.length);
 for (let i = 0; i < maxPhotosCount; i++) {
+  if (i < bothPhotos.length) allPhotos.push({ url: bothPhotos[i], type: 'both' });
   if (i < sonPhotos.length) allPhotos.push({ url: sonPhotos[i], type: 'boy' });
   if (i < daughterPhotos.length) allPhotos.push({ url: daughterPhotos[i], type: 'girl' });
 }
@@ -148,6 +152,8 @@ const i18nDict = {
     gallery_tab_boy: "隆隆 (Jasper)",
     gallery_tab_girl: "心心 (Serena)",
     gallery_load_more: "載入更多照片",
+    intro_title: "什麼是「抓週」？",
+    intro_desc: "抓週是東亞傳統的幼兒儀式，在寶寶滿一歲（周歲）時舉行。家長會在一張大墊子上擺放各種代表不同職業或未來的物品，讓寶寶在不經引導的情況下自由爬行並抓取物品。寶寶最先抓取並玩耍的物品，被用來預測其未來的興趣、天賦與職業方向！這是一個充滿趣味、喜悅與祝福的溫馨家族慶典。",
     game_title: "抓週大預測",
     game_subtitle: "親友團站出來！預測隆隆和心心當天會抓到什麼物品呢？",
     game_boy_mat_title: "哥哥 馮宣翰 (Jasper) 的抓週地墊",
@@ -276,6 +282,8 @@ const i18nDict = {
     gallery_tab_boy: "Jasper (Son)",
     gallery_tab_girl: "Serena (Daughter)",
     gallery_load_more: "Load More Photos",
+    intro_title: "What is \"Zhuazhou\"?",
+    intro_desc: "Zhuazhou is a traditional East Asian ceremony held on a baby's first birthday. Parents place a variety of symbolic items (such as books, stethoscopes, abaci) on a large mat. The baby is then placed on the mat to crawl freely and grab whatever attracts them without guidance. The first items the baby picks up and plays with are symbolically used to predict their future interests, talents, and career paths! It is a fun, joyful celebration filled with warm wishes.",
     game_title: "Zhuazhou Prediction",
     game_subtitle: "Cast your vote! What items do you think Jasper and Serena will grab?",
     game_boy_mat_title: "Jasper's Zhuazhou Mat (Brother)",
@@ -404,6 +412,8 @@ const i18nDict = {
     gallery_tab_boy: "Jasper (息子)",
     gallery_tab_girl: "Serena (娘)",
     gallery_load_more: "写真をもっと読み込む",
+    intro_title: "「選び取り（抓週）」とは？",
+    intro_desc: "「選び取り（抓週・ジュアジョว）」は、東アジアの伝統的な1歳の誕生日のお祝い儀式です。赤ちゃんの前に様々な職業や未来を象徴するアイテム（本、聴診器、そろばんなど）を並べ、赤ちゃんが自ら進んで最初に手に取ったもので、将来の才能や職業を占うというものです。子供の健やかな成長を願い、家族みんなで温かく見守る笑顔あふれるイベントです。",
     game_title: "選び取り大予想！",
     game_subtitle: "JasperとSerenaが当日何を選ぶか、みんなで予想してみましょう！",
     game_boy_mat_title: "お兄ちゃん Jasper の選び取りマット",
@@ -532,6 +542,8 @@ const i18nDict = {
     gallery_tab_boy: "Jasper (ลูกชาย)",
     gallery_tab_girl: "Serena (ลูกสาว)",
     gallery_load_more: "โหลดภาพเพิ่มเติม",
+    intro_title: "พิธี \"จ๋าโจว\" (Zhuazhou) คืออะไร?",
+    intro_desc: "จ๋าโจว (Zhuazhou) หรือ พิธีจับเสี่ยงทายครบรอบหนึ่งปี เป็นประเพณีดั้งเดิมในเอเชียตะวันออก โดยพ่อแม่จะวางสิ่งของสัญลักษณ์ต่างๆ (เช่น หนังสือ, หูฟังแพทย์, ลูกคิด) ไว้บนพรมผืนใหญ่ จากนั้นจะให้เด็กคลานเข้าไปเลือกหยิบสิ่งของเหล่านั้นอย่างอิสระตามความสนใจ ของชิ้นแรกๆ ที่ทารกหยิบขึ้นมาเล่นจะเป็นสัญลักษณ์เสี่ยงทายถึงความสนใจ พรสวรรค์ และเส้นทางอาชีพในอนาคต! เป็นกิจกรรมครอบครัวที่สนุกสนานและเต็มไปด้วยคำอวยพร",
     game_title: "เกมเสี่ยงทายจับสิ่งของ",
     game_subtitle: "ร่วมทายกันเถอะ! คิดว่าในวันงาน Jasper และ Serena จะหยิบของสิ่งไหนกันนะ?",
     game_boy_mat_title: "พรมเสี่ยงทายของพี่ชาย Jasper",
@@ -660,6 +672,8 @@ const i18nDict = {
     gallery_tab_boy: "Jasper (Figlio)",
     gallery_tab_girl: "Serena (Figlia)",
     gallery_load_more: "Mostra Altre Foto",
+    intro_title: "Cos'è lo \"Zhuazhou\"?",
+    intro_desc: "Lo Zhuazhou è una cerimonia tradizionale dell'Asia orientale che si tiene per il primo compleanno del bambino. I genitori posizionano vari oggetti simbolici (come libri, stetoscopi, abachi) su un grande tappeto. Il bambino viene adagiato sul tappeto per gattonare liberamente e afferrare ciò che preferisce senza alcuna guida. Il primo oggetto scelto predice simbolicamente i suoi futuri interessi, talenti e carriera! È una celebrazione festosa ricca di auguri e allegria per tutta la famiglia.",
     game_title: "Zhuazhou Pronostico",
     game_subtitle: "Fate il vostro pronostico! Cosa pensate che afferreranno Jasper e Serena alla cerimonia?",
     game_boy_mat_title: "Tappeto Zhuazhou di Jasper",
