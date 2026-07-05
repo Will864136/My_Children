@@ -273,6 +273,7 @@
 
         <div class="vote-submit-bar">
           <button class="vote-btn" id="submit-votes-btn" disabled data-i18n="game_submit_btn">送出我的預測</button>
+          <button class="vote-btn" id="revote-btn" style="display:none;" data-i18n="game_revote_btn">再次預測</button>
         </div>
       </div>
     </section>
@@ -413,7 +414,10 @@
             <h3 data-i18n="success_title">回條已成功送出！</h3>
             <p data-i18n="success_desc">我們已收到您的回覆，非常期待與您在派對見面！❤️</p>
             <div class="success-wishes" id="success-wishes-show"></div>
-            <button class="edit-rsvp-btn" id="edit-rsvp-btn" data-i18n="success_edit_btn">修改回覆資料</button>
+            <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:20px;">
+              <button class="edit-rsvp-btn" id="edit-rsvp-btn" data-i18n="success_edit_btn">修改回覆資料</button>
+              <button class="edit-rsvp-btn" id="another-rsvp-btn" data-i18n="success_another_btn" style="background-color: var(--color-gold-light); border-color: var(--color-gold); color: var(--color-gold-dark);">填寫另一份回條</button>
+            </div>
           </div>
         </div>
 

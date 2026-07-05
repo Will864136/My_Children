@@ -161,6 +161,7 @@ const i18nDict = {
     game_girl_mat_title: "妹妹 馮妍心 (Serena) 的抓週地墊",
     game_girl_mat_desc: "預測心心會抓中什麼",
     game_submit_btn: "送出我的預測",
+    game_revote_btn: "再次預測",
     timeline_title: "當日活動日程",
     timeline_subtitle: "派對流程安排，期待與大家共度歡樂時光",
     t1_title: "賓客入場與饗宴開始 🍽️",
@@ -198,6 +199,7 @@ const i18nDict = {
     success_title: "回條已成功送出！",
     success_desc: "我們已收到您的回覆，非常期待與您在派對見面！❤️",
     success_edit_btn: "修改回覆資料",
+    success_another_btn: "填寫另一份回條",
     loc_title: "派對時間與交通",
     loc_subtitle: "請將時間記錄在您的日曆中，期待您光臨 Amour 373 Cafe",
     loc_time_label: "活動時間",
@@ -293,6 +295,7 @@ const i18nDict = {
     game_girl_mat_title: "Serena's Zhuazhou Mat (Sister)",
     game_girl_mat_desc: "Predict what Serena will grab",
     game_submit_btn: "Submit My Prediction",
+    game_revote_btn: "Predict Again",
     timeline_title: "Event Schedule",
     timeline_subtitle: "Itinerary of the party, looking forward to celebrating together",
     t1_title: "Guest Arrival & Reception 🍽️",
@@ -330,6 +333,7 @@ const i18nDict = {
     success_title: "RSVP Submitted Successfully!",
     success_desc: "We have received your response, looking forward to seeing you at the party! ❤️",
     success_edit_btn: "Edit RSVP Info",
+    success_another_btn: "Submit Another RSVP",
     loc_title: "Date, Time & Venue",
     loc_subtitle: "Add the details to your calendar and easily navigate to Amour 373 Cafe",
     loc_time_label: "Date & Time",
@@ -425,6 +429,7 @@ const i18nDict = {
     game_girl_mat_title: "妹 Serena の選び取りマット",
     game_girl_mat_desc: "Serenaは何を選ぶかな？",
     game_submit_btn: "予想を送信する",
+    game_revote_btn: "再び予測する",
     timeline_title: "当日のスケジュール",
     timeline_subtitle: "楽しいパーティーのタイムライン",
     t1_title: "開場＆お食事スタート 🍽️",
@@ -462,6 +467,7 @@ const i18nDict = {
     success_title: "ご返信ありがとうございました！",
     success_desc: "ご回答を受け付けました。当日お会いできるのを楽しみにしております！❤️",
     success_edit_btn: "回答を修正する",
+    success_another_btn: "別の返信を送る",
     loc_title: "日時＆アクセス",
     loc_subtitle: "カレンダーに登録し、Amour 373 Cafe へのナビをご利用ください",
     loc_time_label: "日時",
@@ -557,6 +563,7 @@ const i18nDict = {
     game_girl_mat_title: "พรมเสี่ยงทายของน้องสาว Serena",
     game_girl_mat_desc: "เดากันเถอะว่า Serena จะหยิบอะไร",
     game_submit_btn: "ส่งคำทำนายของฉัน",
+    game_revote_btn: "ทายอีกครั้ง",
     timeline_title: "กำหนดการในวันงาน",
     timeline_subtitle: "ลำดับเวลากิจกรรมต่างๆ ในปาร์ตี้",
     t1_title: "ยินดีต้อนรับแขกผู้มีเกียรติและเริ่มมื้ออาหาร 🍽️",
@@ -594,6 +601,7 @@ const i18nDict = {
     success_title: "ส่งข้อมูลเรียบร้อยแล้ว!",
     success_desc: "เราได้รับข้อมูลเรียบร้อยแล้วค่ะ ตั้งหน้าตั้งตารอคอยที่จะพบกันในวันงานนะคะ! ❤️",
     success_edit_btn: "แก้ไขข้อมูลการตอบกลับ",
+    success_another_btn: "ส่งอีกหนึ่งคำตอบ",
     loc_title: "เวลาและสถานที่จัดงาน",
     loc_subtitle: "บันทึกเวลาลงปฏิทินของคุณ และนำทางไปยัง Amour 373 Cafe",
     loc_time_label: "เวลาจัดกิจกรรม",
@@ -689,6 +697,7 @@ const i18nDict = {
     game_girl_mat_title: "Tappeto Zhuazhou di Serena",
     game_girl_mat_desc: "Cosa afferrerà Serena secondo te?",
     game_submit_btn: "Invia Pronostico",
+    game_revote_btn: "Prevedi di nuovo",
     timeline_title: "Programma della Giornata",
     timeline_subtitle: "Programma dell'evento, non vediamo l'ora di festeggiare insieme",
     t1_title: "Arrivo Ospiti & Rinfresco 🍽️",
@@ -726,6 +735,7 @@ const i18nDict = {
     success_title: "Conferma Inviata con Successo!",
     success_desc: "Abbiamo ricevuto la tua risposta, non vediamo l'ora di vederti alla festa! ❤️",
     success_edit_btn: "Modifica Risposta",
+    success_another_btn: "Invia un'altra risposta",
     loc_title: "Orario e Posizione",
     loc_subtitle: "Segna l'evento sul calendario e avvia il navigatore per Amour 373 Cafe",
     loc_time_label: "Orario dell'evento",
@@ -1156,6 +1166,27 @@ function initPredictionGame() {
     showResults();
   });
 
+  const revoteBtn = document.getElementById("revote-btn");
+
+  function enableReVote() {
+    boyGrid.style.display = 'grid';
+    girlGrid.style.display = 'grid';
+    submitBtn.style.display = 'block';
+
+    boyChart.style.display = 'none';
+    girlChart.style.display = 'none';
+    
+    selectedBoyItem = null;
+    selectedGirlItem = null;
+    
+    renderMatGrids();
+    checkSelectionStatus();
+    
+    revoteBtn.style.display = 'none';
+  }
+
+  revoteBtn.addEventListener("click", enableReVote);
+
   // Display voting results charts
   function showResults() {
     boyGrid.style.display = 'none';
@@ -1165,8 +1196,10 @@ function initPredictionGame() {
     boyChart.style.display = 'flex';
     girlChart.style.display = 'flex';
 
-    renderCharts(boyChart, boyVotes, userVoteState.boyItem, 'boy');
-    renderCharts(girlChart, girlVotes, userVoteState.girlItem, 'girl');
+    renderCharts(boyChart, boyVotes, userVoteState ? userVoteState.boyItem : null, 'boy');
+    renderCharts(girlChart, girlVotes, userVoteState ? userVoteState.girlItem : null, 'girl');
+    
+    revoteBtn.style.display = 'block';
   }
 
   function renderCharts(containerEl, votesObj, userSelectId, gender) {
@@ -1260,6 +1293,7 @@ function initPredictionGame() {
   globalPredictionModule = {
     showResults,
     renderMatGrids,
+    enableReVote,
     hasVoted: () => !!userVoteState
   };
 
@@ -1419,6 +1453,29 @@ function initRSVPForm() {
     successWrapper.style.display = 'none';
     formWrapper.style.display = 'block';
   });
+
+  const anotherBtn = document.getElementById("another-rsvp-btn");
+  if (anotherBtn) {
+    anotherBtn.addEventListener("click", () => {
+      // 1. Reset RSVP form values
+      document.getElementById("rsvp-name").value = "";
+      document.getElementById("rsvp-count").value = "1";
+      document.getElementById("rsvp-chairs").value = "0";
+      document.getElementById("rsvp-diet").value = "葷食";
+      document.getElementById("rsvp-wishes").value = "";
+      document.getElementById("rsvp-attend-yes").checked = true;
+      handleAttendanceToggle();
+
+      // 2. Reset prediction game UI
+      if (globalPredictionModule) {
+        globalPredictionModule.enableReVote();
+      }
+
+      // 3. Switch view back to RSVP form
+      successWrapper.style.display = 'none';
+      formWrapper.style.display = 'block';
+    });
+  }
 
   function triggerConfettiExplosion() {
     const end = Date.now() + (2 * 1000); // 2 seconds
