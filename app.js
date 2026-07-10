@@ -129,7 +129,7 @@ let currentLang = localStorage.getItem("twins_party_lang") || detectBrowserLangu
 // Translation dictionaries
 const i18nDict = {
   "zh-TW": {
-    doc_title: "隆隆 & 心心 一歲抓週派對邀請函",
+    doc_title: "👶🏻👶🏻 隆隆 & 心心 抓周慶生會｜全新邀請函",
     hero_boy_badge: "👦🏻 哥哥 隆隆",
     hero_girl_badge: "👧🏻 妹妹 心心",
     hero_title: "隆隆 & 心心 一歲抓週週歲派對",
@@ -140,10 +140,10 @@ const i18nDict = {
     hours_label: "時",
     minutes_label: "分",
     seconds_label: "秒",
-    invitation_greet: "親愛的親朋好友：",
-    invitation_p1: "不知不覺，隆隆和心心要滿一歲囉！👶🏻👶🏻",
-    invitation_p2: "在這個充滿喜悅與重要紀念價值的日子裡，我們為兩個寶貝準備了熱鬧的抓週儀式與溫馨聚會。",
-    invitation_p3: "誠摯地邀請您前來，一同見證這珍貴的時刻，為隆隆與心心送上最溫暖的祝福！",
+    invitation_greet: "親愛的親朋好友們：",
+    invitation_p1: "因為強烈颱風巴威來攪局，不得不將雙寶的聚會延期，非常謝謝大家的體諒、包容與關心！❤️",
+    invitation_p2: "經過這幾天的緊急協調與確認，隆隆和心心的抓周大日子終於重新敲定囉！雖然日期改變了，但我們想與大家齊聚、分享雙寶滿歲喜悅的心情完全沒有變。",
+    invitation_p3: "誠摯地邀請您在全新的日子裡，一同前來見證這珍貴的時刻，為兩個寶貝送上最溫暖的祝福！",
     dc_title: "服裝主題 (Dress Code)",
     dc_desc: "建議穿搭<strong>「白色系服裝」</strong>，讓我們一起以純淨的白色，為寶貝們留下最美的紀念！",
     gallery_title: "成長點滴相簿",
@@ -171,7 +171,7 @@ const i18nDict = {
     t3_title: "溫馨大合照與交流 📸",
     t3_desc: "所有親朋好友與隆隆、心心一同拍攝珍貴的大合照，互道祝福，並贈送小禮物作為一歲生日的溫馨紀念。",
     rsvp_title: "線上出席回條 (RSVP)",
-    rsvp_subtitle: "期待您的蒞臨！請於派對前填寫回條，以利我們為您準備精緻餐點與安排座位",
+    rsvp_subtitle: "因為活動日期有所變更，需要麻煩親友們動動手指，幫我們重新回覆出席意願，以利我們與餐廳統計最終人數與座位安排",
     form_name: "賓客姓名",
     form_name_placeholder: "請輸入您的姓名或家族稱呼",
     form_count: "出席人數",
@@ -203,7 +203,7 @@ const i18nDict = {
     loc_title: "派對時間與交通",
     loc_subtitle: "請將時間記錄在您的日曆中，期待您光臨 Amour 373 Cafe",
     loc_time_label: "活動時間",
-    loc_time_desc: "2026年7月11日 (六)<br>12:00 - 15:00",
+    loc_time_desc: "2026年8月15日 (六)<br>12:00 - 15:00",
     loc_place_label: "派對地點",
     loc_place_desc: "Amour 373 Cafe 2樓",
     loc_address_desc: "桃園市平鎮區廣仁里延平路二段373號",
@@ -230,7 +230,7 @@ const i18nDict = {
     admin_th_wishes: "留言祝福",
     admin_btn_clear: "清空所有回條",
     admin_btn_csv: "匯出 CSV 檔",
-    footer_copy: "隆隆 & 心心 一歲抓週派對邀請函 © 2026",
+    footer_copy: "隆隆 & 心心 抓周慶生會邀請函 © 2026",
     footer_wish: "期待您的蒞臨！",
     // Items (Actual set)
     item_key_label: "鑰匙串",
@@ -259,11 +259,11 @@ const i18nDict = {
     cal_opt_google: "Google 日曆 (線上)",
     cal_opt_ics: "Apple/Outlook (.ics檔案)",
     cal_opt_cancel: "取消",
-    cal_title: "隆隆 & 心心 一歲抓週派對 👶🏻👶🏻",
-    cal_desc: "不知不覺，隆隆和心心要滿一歲囉！誠摯地邀請您一同來見證寶貝們的週歲喜悅！\\n\\n服裝主題 (Dress Code)：建議穿著白色系衣服。"
+    cal_title: "隆隆 & 心心 抓周慶生會 👶🏻👶🏻",
+    cal_desc: "親愛的親朋好友們：強烈颱風巴威來攪局後，雙寶聚會重新敲定在 8/15 (六)，誠摯邀請您前來！\\n\\n服裝主題 (Dress Code)：建議穿著白色系衣服。"
   },
   "en": {
-    doc_title: "Jasper & Serena 1st Birthday Party Invitation",
+    doc_title: "👶🏻👶🏻 Jasper & Serena 1st Birthday Party | New Invitation",
     hero_boy_badge: "👦🏻 Jasper (Older Brother)",
     hero_girl_badge: "👧🏻 Serena (Younger Sister)",
     hero_title: "Jasper & Serena 1st Birthday Party",
@@ -275,9 +275,9 @@ const i18nDict = {
     minutes_label: "Mins",
     seconds_label: "Secs",
     invitation_greet: "Dear Family and Friends,",
-    invitation_p1: "Time flies! Jasper and Serena are turning one! 👶🏻👶🏻",
-    invitation_p2: "On this joyful and memorable day, we have prepared a traditional Zhuazhou (grab items) ceremony and a warm celebration gathering for our twins.",
-    invitation_p3: "We sincerely invite you to come, witness this precious milestone, and shower Jasper and Serena with your warmest wishes!",
+    invitation_p1: "Due to Typhoon Bavi, we had to postpone the twins' party. Thank you so much for your understanding, patience, and care! ❤️",
+    invitation_p2: "After urgent coordination over the past few days, the new date for Jasper and Serena's Zhuazhou party has been finalized! Although the date has changed, our excitement to gather and celebrate their first birthday remains the same.",
+    invitation_p3: "We sincerely invite you to join us on this new date to witness this precious moment and send your warmest blessings to our two little ones!",
     dc_title: "Dress Code",
     dc_desc: "We suggest wearing <strong>'White attire'</strong>, so we can capture beautiful, pure memories with our babies!",
     gallery_title: "Milestones Gallery",
@@ -305,7 +305,7 @@ const i18nDict = {
     t3_title: "Group Photos & Gathering 📸",
     t3_desc: "All guests take photos with Jasper and Serena, exchange blessings, and receive a special return gift.",
     rsvp_title: "RSVP Reply",
-    rsvp_subtitle: "We look forward to seeing you! Please fill out the RSVP form to help us prepare seats and catering",
+    rsvp_subtitle: "Due to the date change, we kindly ask all guests to reconfirm their attendance to help us finalize seats and catering",
     form_name: "Your Name",
     form_name_placeholder: "Please enter your name or family name",
     form_count: "Number of Guests",
@@ -337,7 +337,7 @@ const i18nDict = {
     loc_title: "Date, Time & Venue",
     loc_subtitle: "Add the details to your calendar and easily navigate to Amour 373 Cafe",
     loc_time_label: "Date & Time",
-    loc_time_desc: "Saturday, July 11, 2026<br>12:00 PM - 3:00 PM",
+    loc_time_desc: "Saturday, August 15, 2026<br>12:00 PM - 3:00 PM",
     loc_place_label: "Party Location",
     loc_place_desc: "Amour 373 Cafe 2F",
     loc_address_desc: "No. 373, Sec. 2, Yanping Rd., Pingzhen Dist., Taoyuan City",
@@ -394,10 +394,10 @@ const i18nDict = {
     cal_opt_ics: "Apple/Outlook (.ics file)",
     cal_opt_cancel: "Cancel",
     cal_title: "Jasper & Serena 1st Birthday Party 👶🏻👶🏻",
-    cal_desc: "Time flies! Jasper and Serena are turning one! We sincerely invite you to join us.\\n\\nDress Code: White Theme."
+    cal_desc: "Dear Family and Friends: Due to Typhoon Bavi, the twins' party has been rescheduled to August 15 (Sat). We sincerely invite you to join us!\\n\\nDress Code: White Theme."
   },
   "ja": {
-    doc_title: "Jasper & Serena 1歳のお誕生日会 招待状",
+    doc_title: "👶🏻👶🏻 Jasper & Serena 1歳お誕生日会 | 新しい招待状",
     hero_boy_badge: "👦🏻 お兄ちゃん 隆隆 (Jasper)",
     hero_girl_badge: "👧🏻 妹 馮妍心 (Serena)",
     hero_title: "Jasper & Serena 1歳お誕生日会",
@@ -408,10 +408,10 @@ const i18nDict = {
     hours_label: "時間",
     minutes_label: "分",
     seconds_label: "秒",
-    invitation_greet: "親愛なる皆様へ",
-    invitation_p1: "あっという間に、JasperとSerenaが1歳の誕生日を迎えることになりました！👶🏻👶🏻",
-    invitation_p2: "この喜びにあふれる記念すべき日に、二人のために「選び取り（抓週）の儀式」とささやかなパーティーをご用意いたしました。",
-    invitation_p3: "皆様と一緒に大切な瞬間を見守り、温かい祝福を贈っていただければ幸いです。",
+    invitation_greet: "親愛なるご家族、ご友人の皆様へ",
+    invitation_p1: "先日は強い台風バーウィーの影響により、急遽ツインズのパーティーを延期することとなり、皆様のご理解とご心配に心より感謝申し上げます！❤️",
+    invitation_p2: "この数日間の緊急調整と確認を経て、JasperとSerenaの選び取り（抓週）の新たな日程が決定いたしました！日付は変わりましたが、皆様と集まり、二人の1歳の誕生日を一緒にお祝いしたいという私たちの気持ちは少しも変わりません。",
+    invitation_p3: "新たな日程にて、この大切な瞬間を共に見守り、二人に温かい祝福を届けていただけますと幸いです！",
     dc_title: "ドレスコード (Dress Code)",
     dc_desc: "当日はぜひ<strong>「白系の服装」</strong>でお越しください。みんなで純粋な白に包まれ、素敵な思い出を作りましょう！",
     gallery_title: "成長のアルバム",
@@ -439,7 +439,7 @@ const i18nDict = {
     t3_title: "記念撮影＆交流会 📸",
     t3_desc: "全員で記念撮影を行い、祝福を交わします。ささやかなお土産もご用意しております。",
     rsvp_title: "出席のご返信 (RSVP)",
-    rsvp_subtitle: "皆様のお越しをお待ちしております！お手数ですが、事前にご返信をお願いいたします",
+    rsvp_subtitle: "開催日の変更に伴い、人数と座席の最終調整のため、お手数ですが改めてご出席の確認をお願いいたします",
     form_name: "お名前",
     form_name_placeholder: "お名前またはご家族名をご入力ください",
     form_count: "ご出席人数",
@@ -471,7 +471,7 @@ const i18nDict = {
     loc_title: "日時＆アクセス",
     loc_subtitle: "カレンダーに登録し、Amour 373 Cafe へのナビをご利用ください",
     loc_time_label: "日時",
-    loc_time_desc: "2026年7月11日 (土)<br>12:00 - 15:00",
+    loc_time_desc: "2026年8月15日 (土)<br>12:00 - 15:00",
     loc_place_label: "会場",
     loc_place_desc: "Amour 373 Cafe 2階",
     loc_address_desc: "桃園市平鎮区広仁里延平路二段373号",
@@ -528,10 +528,10 @@ const i18nDict = {
     cal_opt_ics: "Apple/Outlook (.icsファイル)",
     cal_opt_cancel: "キャンセル",
     cal_title: "Jasper & Serena 1歳のお誕生日パーティー 👶🏻👶🏻",
-    cal_desc: "JasperとSerenaが満1歳を迎えます！選び取りパーティーにぜひご参加ください。\\n\\nドレスコード：ホワイト"
+    cal_desc: "親愛なる皆様へ：台風の影響により延期となったパーティーは8月15日（土）に開催いたします！ぜひご参加ください。\\n\\nドレスコード：ホワイト"
   },
   "th": {
-    doc_title: "การ์ดเชิญงานครบรอบ 1 ปี ของ Jasper & Serena",
+    doc_title: "👶🏻👶🏻 ปาร์ตี้วันเกิด 1 ขวบ ของ Jasper & Serena | การ์ดเชิญใหม่",
     hero_boy_badge: "👦🏻 พี่ชาย Jasper",
     hero_girl_badge: "👧🏻 น้องสาว Serena",
     hero_title: "ปาร์ตี้วันเกิด 1 ขวบ ของ Jasper & Serena",
@@ -542,10 +542,10 @@ const i18nDict = {
     hours_label: "ชม.",
     minutes_label: "นาที",
     seconds_label: "วิ",
-    invitation_greet: "เรียน ครอบครัวและมิตรสหายทุกท่าน,",
-    invitation_p1: "เวลาผ่านไปเร็วเหลือเกิน! Jasper และ Serena กำลังจะอายุครบ 1 ขวบแล้วค่ะ! 👶🏻👶🏻",
-    invitation_p2: "ในวันแห่งความยินดีนี้ เราได้จัดพิธีจับจับเสี่ยงทายอนาคตตามประเพณีโบราณ (Zhuazhou) และจัดงานพบปะสังสรรค์เล็กๆ ที่แสนอบอุ่นสำหรับลูกน้อยทั้งสองคน",
-    invitation_p3: "เราขอเรียนเชิญทุกท่านร่วมเป็นสักขีพยานในช่วงเวลาที่ล้ำค่านี้ และส่งต่อความรักและคำอวยพรที่อบอุ่นที่สุดให้แก่เด็กๆ ด้วยกันนะคะ!",
+    invitation_greet: "ถึงญาติสนิทมิตรสหายที่รักทุกท่าน:",
+    invitation_p1: "เนื่องจากผลกระทบจากพายุไต้ฝุ่นบาหวี่ก่อนหน้านี้ ทำให้เราจำเป็นต้องเลื่อนงานปาร์ตี้ของสองแฝดออกไป ขอขอบคุณทุกท่านเป็นอย่างยิ่งสำหรับความเข้าใจ ความอดทน และความห่วงใยนะคะ! ❤️",
+    invitation_p2: "หลังจากประสานงานและยืนยันอย่างเร่งด่วนในช่วงไม่กี่วันที่ผ่านมา วันจัดงานจับเสี่ยงทายของ Jasper และ Serena ก็เคาะวันใหม่เรียบร้อยแล้วค่ะ! ถึงแม้ว่าวันที่จัดงานจะเปลี่ยนไป แต่ความตั้งใจของเราที่อยากจะรวมตัวและแบ่งปันความสุขครบรอบหนึ่งปีของสองแฝดกับทุกท่านยังคงเหมือนเดิมไม่เปลี่ยนแปลงเลยค่ะ",
+    invitation_p3: "ขอเรียนเชิญทุกท่านร่วมเป็นสักขีพยานในวันใหม่นี้ และส่งมอบคำอวยพรที่อบอุ่นที่สุดให้กับเจ้าตัวเล็กทั้งสองคนร่วมกันนะคะ!",
     dc_title: "ธีมการแต่งกาย (Dress Code)",
     dc_desc: "ขอแนะนำเป็น <strong>'เสื้อผ้าโทนสีขาว'</strong> เพื่อให้พวกเราทุกคนได้บันทึกความทรงจำอันบริสุทธิ์และสวยงามนี้ร่วมกันกับเด็กๆ นะคะ!",
     gallery_title: "คลังภาพการเติบโต",
@@ -573,7 +573,7 @@ const i18nDict = {
     t3_title: "ถ่ายภาพร่วมกันและอำลาอย่างอบอุ่น 📸",
     t3_desc: "ถ่ายรูปรวมของครอบครัวและแขกทุกท่าน มอบคำอวยพร และรับของที่ระลึกครบรอบ 1 ปีแสนน่ารัก",
     rsvp_title: "ตอบรับการเข้าร่วมงาน (RSVP)",
-    rsvp_subtitle: "หวังว่าจะได้พบกันนะคะ! กรุณากรอกแบบฟอร์มเพื่อความสะดวกในการจัดเตรียมอาหารและที่นั่ง",
+    rsvp_subtitle: "เนื่องจากมีการเปลี่ยนแปลงวันจัดงาน รบกวนแขกทุกท่านช่วยตอบแบบฟอร์มยืนยันการเข้าร่วมงานอีกครั้ง เพื่อความสะดวกในการจัดเตรียมอาหารและที่นั่งนะคะ",
     form_name: "ชื่อผู้เข้าร่วมงาน",
     form_name_placeholder: "โปรดระบุชื่อของคุณหรือครอบครัว",
     form_count: "จำนวนผู้เข้าร่วม",
@@ -605,7 +605,7 @@ const i18nDict = {
     loc_title: "เวลาและสถานที่จัดงาน",
     loc_subtitle: "บันทึกเวลาลงปฏิทินของคุณ และนำทางไปยัง Amour 373 Cafe",
     loc_time_label: "เวลาจัดกิจกรรม",
-    loc_time_desc: "วันเสาร์ที่ 11 กรกฎาคม 2026<br>เวลา 12:00 - 15:00 น.",
+    loc_time_desc: "วันเสาร์ที่ 15 สิงหาคม 2026<br>เวลา 12:00 - 15:00 น.",
     loc_place_label: "สถานที่",
     loc_place_desc: "Amour 373 Cafe ชั้น 2",
     loc_address_desc: "เลขที่ 373 ถ.เหยียนผิง เซกชัน 2, ต.ผิงเจิ้น, เมืองเถาหยวน",
@@ -662,10 +662,10 @@ const i18nDict = {
     cal_opt_ics: "Apple/Outlook (ไฟล์ .ics)",
     cal_opt_cancel: "ยกเลิก",
     cal_title: "ปาร์ตี้วันเกิดครบรอบ 1 ปี ของ Jasper & Serena 👶🏻👶🏻",
-    cal_desc: "Jasper และ Serena กำลังจะครบ 1 ขวบ! ขอเชิญร่วมปาร์ตี้เสี่ยงทายจับของด้วยกันค่ะ\\n\\nธีมการแต่งกาย: สีขาว"
+    cal_desc: "ถึงญาติสนิทมิตรสหายทุกท่าน: เนื่องจากผลกระทบจากพายุไต้ฝุ่นบาหวี่ทำให้งานของสองแฝดเลื่อนไปจัดเป็นวันเสาร์ที่ 15 สิงหาคม ขอเรียนเชิญทุกท่านร่วมปาร์ตี้ค่ะ\\n\\nธีมการแต่งกาย: สีขาว"
   },
   "it": {
-    doc_title: "Invito al 1° Compleanno di Jasper & Serena",
+    doc_title: "👶🏻👶🏻 1° Compleanno di Jasper & Serena | Nuovo Invito",
     hero_boy_badge: "👦🏻 Fratello Maggiore Jasper",
     hero_girl_badge: "👧🏻 Sorella Minore Serena",
     hero_title: "1° Compleanno di Jasper & Serena",
@@ -677,9 +677,9 @@ const i18nDict = {
     minutes_label: "Min",
     seconds_label: "Sec",
     invitation_greet: "Cari Parenti e Amici,",
-    invitation_p1: "Incredibile ma vero, Jasper e Serena compiono un anno! 👶🏻👶🏻",
-    invitation_p2: "In questo giorno pieno di felicità e valore commemorativo, abbiamo preparato il rito tradizionale dello Zhuazhou (la scelta degli oggetti) e una festa calorosa per i nostri due piccoli.",
-    invitation_p3: "Vi invitiamo sinceramente a venire, assistere a questo prezioso momento e fare a Jasper e Serena i vostri auguri più affettuosi!",
+    invitation_p1: "A causa del recente tifone Bavi, abbiamo dovuto rimandare la festa dei gemelli. Grazie di cuore per la vostra comprensione, pazienza e affetto! ❤️",
+    invitation_p2: "Dopo un rapido coordinamento in questi ultimi giorni, la nuova data per la festa dello Zhuazhou di Jasper e Serena è stata finalmente definita! Anche se la data è cambiata, il nostro desiderio di riunirci e condividere la gioia del loro primo compleanno rimane esattamente lo stesso.",
+    invitation_p3: "Vi invitiamo sinceramente a unirvi a noi in questa nuova data per assistere a questo momento prezioso e inviare i vostri migliori auguri ai nostri piccoli!",
     dc_title: "Tema dell'abbigliamento (Dress Code)",
     dc_desc: "Si consiglia un abbigliamento in <strong>'Bianco'</strong> per immortalare insieme con purezza questo bellissimo ricordo!",
     gallery_title: "Galleria dei Ricordi",
@@ -707,7 +707,7 @@ const i18nDict = {
     t3_title: "Foto di Gruppo & Saluti 📸",
     t3_desc: "Scatti fotografici di tutti gli invitati insieme a Jasper e Serena, scambio di auguri e consegna di un simpatico souvenir.",
     rsvp_title: "Conferma Presenza (RSVP)",
-    rsvp_subtitle: "Vi aspettiamo! Vi preghiamo di compilare il modulo per facilitare la preparazione dei tavoli e del cibo",
+    rsvp_subtitle: "A causa del cambio di data, chiediamo gentilmente a tutti gli ospiti di riconfermare la loro presenza per organizzare i tavoli e il cibo",
     form_name: "Nome dell'ospite",
     form_name_placeholder: "Inserisci il tuo nome o cognome di famiglia",
     form_count: "Numero di partecipanti",
@@ -739,7 +739,7 @@ const i18nDict = {
     loc_title: "Orario e Posizione",
     loc_subtitle: "Segna l'evento sul calendario e avvia il navigatore per Amour 373 Cafe",
     loc_time_label: "Orario dell'evento",
-    loc_time_desc: "Sabato 11 Luglio 2026<br>12:00 - 15:00",
+    loc_time_desc: "Sabato 15 Agosto 2026<br>12:00 - 15:00",
     loc_place_label: "Luogo dell'evento",
     loc_place_desc: "Amour 373 Cafe 2F",
     loc_address_desc: "No. 373, Sec. 2, Yanping Rd., Pingzhen Dist., Taoyuan",
@@ -796,7 +796,7 @@ const i18nDict = {
     cal_opt_ics: "Apple/Outlook (file .ics)",
     cal_opt_cancel: "Annulla",
     cal_title: "Festa di Compleanno 1 Anno Jasper & Serena 👶🏻👶🏻",
-    cal_desc: "Jasper e Serena compiono un anno! Vi invitiamo al rito Zhuazhou e alla festa.\\n\\nDress code: abiti bianchi."
+    cal_desc: "Cari Parenti e Amici: A causa del tifone Bavi, la festa dei gemelli è stata rimandata a Sabato 15 Agosto. Vi invitiamo a unirvi a noi!\\n\\nDress code: abiti bianchi."
   }
 };
 
@@ -809,8 +809,8 @@ let lightboxActivePhotos = [];
 let selectedBoyItem = null;
 let selectedGirlItem = null;
 
-// Target date: 2026-07-11 12:00:00 (GMT+8)
-const TARGET_DATE_TIME = new Date("2026-07-11T12:00:00+08:00").getTime();
+// Target date: 2026-08-15 12:00:00 (GMT+8)
+const TARGET_DATE_TIME = new Date("2026-08-15T12:00:00+08:00").getTime();
 
 // Seed database keys
 const MOCK_VOTES_KEY_BOY = "zhuazhou_votes_boy_v1";
@@ -830,6 +830,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initRSVPForm();
   initLocationAndCalendar();
   initAdminBackOffice();
+  initFallingBackground();
   
   // Initial translations run
   applyTranslations();
@@ -1563,7 +1564,7 @@ function initLocationAndCalendar() {
     document.getElementById("cal-opt-google").addEventListener("click", () => {
       const calTitle = encodeURIComponent(dict.cal_title || "隆隆 & 心心 一歲抓週派對 👶🏻👶🏻");
       const calDesc = encodeURIComponent(dict.cal_desc || "不知不覺，隆隆和心心要滿一歲囉！");
-      const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calTitle}&dates=20260711T040000Z%2F20260711T070000Z&details=${calDesc}&location=Amour+373+Cafe+(桃園市平鎮區延平路二段373號)&sf=true&output=xml`;
+      const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calTitle}&dates=20260815T040000Z%2F20260815T070000Z&details=${calDesc}&location=Amour+373+Cafe+(桃園市平鎮區延平路二段373號)&sf=true&output=xml`;
       window.open(googleUrl, '_blank');
       cleanMenu();
     });
@@ -1578,10 +1579,10 @@ function initLocationAndCalendar() {
         "VERSION:2.0",
         "PRODID:-//Zhuazhou Twins Party//NONSGML v1.0//EN",
         "BEGIN:VEVENT",
-        "UID:twins-1st-birthday-20260711",
+        "UID:twins-1st-birthday-20260815",
         "DTSTAMP:20260703T000000Z",
-        "DTSTART:20260711T040000Z",
-        "DTEND:20260711T070000Z",
+        "DTSTART:20260815T040000Z",
+        "DTEND:20260815T070000Z",
         `SUMMARY:${rawTitle}`,
         `DESCRIPTION:${rawDesc.replace(/\n/g, "\\n")}`,
         "LOCATION:Amour 373 Cafe (桃園市平鎮區延平路二段373號)",
@@ -1756,4 +1757,76 @@ function initAdminBackOffice() {
     link.click();
     document.body.removeChild(link);
   });
+}
+
+/* ==========================================================================
+   6. Falling Background Particles Module
+   ========================================================================== */
+function initFallingBackground() {
+  const container = document.body;
+  const items = [
+    { type: 'emoji', value: '🧸' },
+    { type: 'emoji', value: '🎈' },
+    { type: 'emoji', value: '🎂' },
+    { type: 'emoji', value: '🍭' },
+    { type: 'emoji', value: '🎁' },
+    { type: 'emoji', value: '🌟' },
+    { type: 'emoji', value: '🎀' },
+    { type: 'emoji', value: '🦖' },
+    // Pastels Mickey Ears SVG
+    { type: 'svg', value: `<svg viewBox="0 0 100 100" style="width:100%; height:100%;"><circle cx="50" cy="55" r="30" /><circle cx="20" cy="25" r="18" /><circle cx="80" cy="25" r="18" /></svg>` },
+    // Pastels Hello Kitty Bow SVG
+    { type: 'svg', value: `<svg viewBox="0 0 100 100" style="width:100%; height:100%;"><circle cx="50" cy="50" r="12" /><path d="M50 50 C25 25, 25 75, 50 50 Z" /><path d="M50 50 C75 25, 75 75, 50 50 Z" /></svg>` }
+  ];
+
+  const colors = [
+    '#BDE0FE', // pastel blue
+    '#FFC6FF', // pastel pink
+    '#FAD2E1', // pastel soft pink
+    '#FDFFB6', // pastel yellow
+    '#CAFFBF', // pastel green
+    '#A0C4FF', // pastel indigo
+    '#FFADAD'  // pastel red
+  ];
+
+  setInterval(() => {
+    // Limit to 20 concurrent items to be super performant
+    if (document.querySelectorAll(".falling-item").length > 20) return;
+
+    const item = items[Math.floor(Math.random() * items.length)];
+    const el = document.createElement("div");
+    el.className = "falling-item";
+
+    const size = Math.random() * 20 + 20; // 20px to 40px
+    const duration = Math.random() * 8 + 8; // 8s to 16s
+    const swayX = Math.random() * 100 - 50; // -50px to 50px
+    
+    el.style.left = `${Math.random() * 95}vw`;
+    el.style.animationDuration = `${duration}s`;
+    el.style.setProperty('--sway-x', `${swayX}px`);
+
+    if (item.type === 'emoji') {
+      el.innerText = item.value;
+      el.style.fontSize = `${size}px`;
+    } else {
+      el.innerHTML = item.value;
+      el.style.width = `${size}px`;
+      el.style.height = `${size}px`;
+      el.style.display = 'inline-block';
+      
+      // Colorize the SVG path
+      const svg = el.querySelector("svg");
+      if (svg) {
+        svg.style.fill = colors[Math.floor(Math.random() * colors.length)];
+        svg.style.opacity = '0.4'; // gentle transparency so it's not distracting
+      }
+    }
+
+    container.appendChild(el);
+
+    // Clean up
+    setTimeout(() => {
+      el.remove();
+    }, (duration + 1) * 1000);
+  }, 1200); // spawn every 1.2 seconds
 }
