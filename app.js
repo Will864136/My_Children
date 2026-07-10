@@ -260,7 +260,9 @@ const i18nDict = {
     cal_opt_ics: "Apple/Outlook (.ics檔案)",
     cal_opt_cancel: "取消",
     cal_title: "隆隆 & 心心 抓周慶生會 👶🏻👶🏻",
-    cal_desc: "親愛的親朋好友們：強烈颱風巴威來攪局後，雙寶聚會重新敲定在 8/15 (六)，誠摯邀請您前來！\\n\\n服裝主題 (Dress Code)：建議穿著白色系衣服。"
+    cal_desc: "親愛的親朋好友們：強烈颱風巴威來攪局後，雙寶聚會重新敲定在 8/15 (六)，誠摯邀請您前來！\\n\\n服裝主題 (Dress Code)：建議穿著白色系衣服。",
+    video_title: "寶寶成長影片 🎥",
+    video_subtitle: "點擊觀看隆隆和心心學走路的可愛瞬間！"
   },
   "en": {
     doc_title: "👶🏻👶🏻 Jasper & Serena 1st Birthday Party | New Invitation",
@@ -394,7 +396,9 @@ const i18nDict = {
     cal_opt_ics: "Apple/Outlook (.ics file)",
     cal_opt_cancel: "Cancel",
     cal_title: "Jasper & Serena 1st Birthday Party 👶🏻👶🏻",
-    cal_desc: "Dear Family and Friends: Due to Typhoon Bavi, the twins' party has been rescheduled to August 15 (Sat). We sincerely invite you to join us!\\n\\nDress Code: White Theme."
+    cal_desc: "Dear Family and Friends: Due to Typhoon Bavi, the twins' party has been rescheduled to August 15 (Sat). We sincerely invite you to join us!\\n\\nDress Code: White Theme.",
+    video_title: "Babies' Milestone Video 🎥",
+    video_subtitle: "Click to watch Jasper & Serena taking their first steps!"
   },
   "ja": {
     doc_title: "👶🏻👶🏻 Jasper & Serena 1歳お誕生日会 | 新しい招待状",
@@ -528,7 +532,9 @@ const i18nDict = {
     cal_opt_ics: "Apple/Outlook (.icsファイル)",
     cal_opt_cancel: "キャンセル",
     cal_title: "Jasper & Serena 1歳のお誕生日パーティー 👶🏻👶🏻",
-    cal_desc: "親愛なる皆様へ：台風の影響により延期となったパーティーは8月15日（土）に開催いたします！ぜひご参加ください。\\n\\nドレスコード：ホワイト"
+    cal_desc: "親愛なる皆様へ：台風の影響により延期となったパーティーは8月15日（土）に開催いたします！ぜひご参加ください。\\n\\nドレスコード：ホワイト",
+    video_title: "赤ちゃんの成長ビデオ 🎥",
+    video_subtitle: "JasperとSerenaが歩く練習をしている可愛い姿をご覧ください！"
   },
   "th": {
     doc_title: "👶🏻👶🏻 ปาร์ตี้วันเกิด 1 ขวบ ของ Jasper & Serena | การ์ดเชิญใหม่",
@@ -662,7 +668,9 @@ const i18nDict = {
     cal_opt_ics: "Apple/Outlook (ไฟล์ .ics)",
     cal_opt_cancel: "ยกเลิก",
     cal_title: "ปาร์ตี้วันเกิดครบรอบ 1 ปี ของ Jasper & Serena 👶🏻👶🏻",
-    cal_desc: "ถึงญาติสนิทมิตรสหายทุกท่าน: เนื่องจากผลกระทบจากพายุไต้ฝุ่นบาหวี่ทำให้งานของสองแฝดเลื่อนไปจัดเป็นวันเสาร์ที่ 15 สิงหาคม ขอเรียนเชิญทุกท่านร่วมปาร์ตี้ค่ะ\\n\\nธีมการแต่งกาย: สีขาว"
+    cal_desc: "ถึงญาติสนิทมิตรสหายทุกท่าน: เนื่องจากผลกระทบจากพายุไต้ฝุ่นบาหวี่ทำให้งานของสองแฝดเลื่อนไปจัดเป็นวันเสาร์ที่ 15 สิงหาคม ขอเรียนเชิญทุกท่านร่วมปาร์ตี้ค่ะ\\n\\nธีมการแต่งกาย: สีขาว",
+    video_title: "วิดีโอพัฒนาการของเด็กๆ 🎥",
+    video_subtitle: "คลิกชมความน่ารักของ Jasper และ Serena ตอนหัดเดินกันนะคะ!"
   },
   "it": {
     doc_title: "👶🏻👶🏻 1° Compleanno di Jasper & Serena | Nuovo Invito",
@@ -796,7 +804,9 @@ const i18nDict = {
     cal_opt_ics: "Apple/Outlook (file .ics)",
     cal_opt_cancel: "Annulla",
     cal_title: "Festa di Compleanno 1 Anno Jasper & Serena 👶🏻👶🏻",
-    cal_desc: "Cari Parenti e Amici: A causa del tifone Bavi, la festa dei gemelli è stata rimandata a Sabato 15 Agosto. Vi invitiamo a unirvi a noi!\\n\\nDress code: abiti bianchi."
+    cal_desc: "Cari Parenti e Amici: A causa del tifone Bavi, la festa dei gemelli è stata rimandata a Sabato 15 Agosto. Vi invitiamo a unirvi a noi!\\n\\nDress code: abiti bianchi.",
+    video_title: "Video dei Gemelli 🎥",
+    video_subtitle: "Clicca per guardare Jasper e Serena mentre fanno i loro primi passi!"
   }
 };
 
@@ -831,6 +841,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLocationAndCalendar();
   initAdminBackOffice();
   initFallingBackground();
+  initMilestoneVideo();
   
   // Initial translations run
   applyTranslations();
@@ -1829,4 +1840,34 @@ function initFallingBackground() {
       el.remove();
     }, (duration + 1) * 1000);
   }, 1200); // spawn every 1.2 seconds
+}
+
+/* ==========================================================================
+   7. Milestone Video Module
+   ========================================================================== */
+function initMilestoneVideo() {
+  const videoCover = document.getElementById("video-cover");
+  const videoEl = document.getElementById("milestone-video");
+
+  if (!videoCover || !videoEl) return;
+
+  videoCover.addEventListener("click", () => {
+    // Hide custom cover overlay smoothly
+    videoCover.style.opacity = '0';
+    videoCover.style.pointerEvents = 'none';
+    videoCover.style.visibility = 'hidden';
+
+    // Play video
+    videoEl.play().catch(err => {
+      console.warn("Autoplay failed, displaying browser native play controls:", err);
+    });
+  });
+
+  // Listen to video events to show cover again if video finishes or is reset
+  videoEl.addEventListener("ended", () => {
+    // Show custom cover overlay again
+    videoCover.style.opacity = '1';
+    videoCover.style.pointerEvents = 'auto';
+    videoCover.style.visibility = 'visible';
+  });
 }
