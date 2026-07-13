@@ -2432,3 +2432,27 @@ footer p {
     font-size: 0.88rem;
   }
 }
+
+/* Countdown Target Date Header */
+.countdown-target-time {
+  font-family: 'Fredoka', var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  background-color: var(--bg-card);
+  border: 1.5px dashed var(--color-gold);
+  border-radius: 12px;
+  padding: 4px 15px;
+  margin: 15px auto 10px auto;
+  display: inline-block;
+  box-shadow: var(--shadow-small);
+}
+
+@media (max-width: 576px) {
+  .countdown-target-time {
+    font-size: 0.82rem;
+    padding: 3px 12px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+  }
+}
