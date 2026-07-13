@@ -262,7 +262,10 @@ const i18nDict = {
     cal_title: "隆隆 & 心心 抓周慶生會 👶🏻👶🏻",
     cal_desc: "親愛的親朋好友們：強烈颱風巴威來攪局後，雙寶聚會重新敲定在 8/15 (六)，誠摯邀請您前來！\\n\\n服裝主題 (Dress Code)：建議穿著白色系衣服。",
     video_title: "寶寶成長影片 🎥",
-    video_subtitle: "點擊觀看隆隆和心心學走路的可愛瞬間！"
+    video_subtitle: "點擊觀看隆隆和心心學走路的可愛瞬間！",
+    crawl_title: "雙寶抓週大預測進行中... 👶🏻👶🏻",
+    crawl_boy_reached: "哥哥抓到了 {item}！",
+    crawl_girl_reached: "妹妹抓到了 {item}！"
   },
   "en": {
     doc_title: "👶🏻👶🏻 Jasper & Serena 1st Birthday Party | New Invitation",
@@ -398,7 +401,10 @@ const i18nDict = {
     cal_title: "Jasper & Serena 1st Birthday Party 👶🏻👶🏻",
     cal_desc: "Dear Family and Friends: Due to Typhoon Bavi, the twins' party has been rescheduled to August 15 (Sat). We sincerely invite you to join us!\\n\\nDress Code: White Theme.",
     video_title: "Babies' Milestone Video 🎥",
-    video_subtitle: "Click to watch Jasper & Serena taking their first steps!"
+    video_subtitle: "Click to watch Jasper & Serena taking their first steps!",
+    crawl_title: "Zhuazhou Prediction Race... 👶🏻👶🏻",
+    crawl_boy_reached: "Jasper grabbed the {item}!",
+    crawl_girl_reached: "Serena grabbed the {item}!"
   },
   "ja": {
     doc_title: "👶🏻👶🏻 Jasper & Serena 1歳お誕生日会 | 新しい招待状",
@@ -534,7 +540,10 @@ const i18nDict = {
     cal_title: "Jasper & Serena 1歳のお誕生日パーティー 👶🏻👶🏻",
     cal_desc: "親愛なる皆様へ：台風の影響により延期となったパーティーは8月15日（土）に開催いたします！ぜひご参加ください。\\n\\nドレスコード：ホワイト",
     video_title: "赤ちゃんの成長ビデオ 🎥",
-    video_subtitle: "JasperとSerenaが歩く練習をしている可愛い姿をご覧ください！"
+    video_subtitle: "JasperとSerenaが歩く練習をしている可愛い姿をご覧ください！",
+    crawl_title: "選び取り（抓週）競争中... 👶🏻👶🏻",
+    crawl_boy_reached: "Jasperくんが {item} を選びました！",
+    crawl_girl_reached: "Serenaちゃんが {item} を選びました！"
   },
   "th": {
     doc_title: "👶🏻👶🏻 ปาร์ตี้วันเกิด 1 ขวบ ของ Jasper & Serena | การ์ดเชิญใหม่",
@@ -670,7 +679,10 @@ const i18nDict = {
     cal_title: "ปาร์ตี้วันเกิดครบรอบ 1 ปี ของ Jasper & Serena 👶🏻👶🏻",
     cal_desc: "ถึงญาติสนิทมิตรสหายทุกท่าน: เนื่องจากผลกระทบจากพายุไต้ฝุ่นบาหวี่ทำให้งานของสองแฝดเลื่อนไปจัดเป็นวันเสาร์ที่ 15 สิงหาคม ขอเรียนเชิญทุกท่านร่วมปาร์ตี้ค่ะ\\n\\nธีมการแต่งกาย: สีขาว",
     video_title: "วิดีโอพัฒนาการของเด็กๆ 🎥",
-    video_subtitle: "คลิกชมความน่ารักของ Jasper และ Serena ตอนหัดเดินกันนะคะ!"
+    video_subtitle: "คลิกชมความน่ารักของ Jasper และ Serena ตอนหัดเดินกันนะคะ!",
+    crawl_title: "การแข่งขันคลานจับของกำลังเริ่มขึ้น... 👶🏻👶🏻",
+    crawl_boy_reached: "Jasper หยิบได้ {item}!",
+    crawl_girl_reached: "Serena หยิบได้ {item}!"
   },
   "it": {
     doc_title: "👶🏻👶🏻 1° Compleanno di Jasper & Serena | Nuovo Invito",
@@ -806,7 +818,10 @@ const i18nDict = {
     cal_title: "Festa di Compleanno 1 Anno Jasper & Serena 👶🏻👶🏻",
     cal_desc: "Cari Parenti e Amici: A causa del tifone Bavi, la festa dei gemelli è stata rimandata a Sabato 15 Agosto. Vi invitiamo a unirvi a noi!\\n\\nDress code: abiti bianchi.",
     video_title: "Video dei Gemelli 🎥",
-    video_subtitle: "Clicca per guardare Jasper e Serena mentre fanno i loro primi passi!"
+    video_subtitle: "Clicca per guardare Jasper e Serena mentre fanno i loro primi passi!",
+    crawl_title: "Zhuazhou corsa in corso... 👶🏻👶🏻",
+    crawl_boy_reached: "Jasper ha afferrato il/la {item}!",
+    crawl_girl_reached: "Serena ha afferrato il/la {item}!"
   }
 };
 
@@ -1168,15 +1183,116 @@ function initPredictionGame() {
     localStorage.setItem(MOCK_VOTES_KEY_BOY, JSON.stringify(boyVotes));
     localStorage.setItem(MOCK_VOTES_KEY_GIRL, JSON.stringify(girlVotes));
 
-    confetti({
-      particleCount: 100,
-      spread: 60,
-      origin: { y: 0.8 }
-    });
-
     userVoteState = voteData;
-    showResults();
+
+    // Trigger 3D Crawling Animation first, then show results
+    triggerCrawlingAnimation(selectedBoyItem, selectedGirlItem, () => {
+      showResults();
+    });
   });
+
+  function triggerCrawlingAnimation(boyItemId, girlItemId, onComplete) {
+    const theater = document.getElementById("crawling-theater");
+    const runnerBoy = document.getElementById("runner-boy");
+    const runnerGirl = document.getElementById("runner-girl");
+    const targetBoy = document.getElementById("target-boy");
+    const targetGirl = document.getElementById("target-girl");
+    const toastOverlay = document.getElementById("crawling-toast-overlay");
+    const toastText = document.getElementById("crawling-toast-text");
+
+    if (!theater || !runnerBoy || !runnerGirl || !targetBoy || !targetGirl) {
+      if (onComplete) onComplete();
+      return;
+    }
+
+    const dict = i18nDict[currentLang] || i18nDict["zh-TW"];
+
+    // 1. Find details of selected items
+    const boyItem = zhuazhouItems.find(i => i.id === boyItemId);
+    const girlItem = zhuazhouItems.find(i => i.id === girlItemId);
+
+    if (!boyItem || !girlItem) {
+      if (onComplete) onComplete();
+      return;
+    }
+
+    // 2. Render item SVGs at the target endpoints
+    targetBoy.innerHTML = boyItem.svg;
+    targetGirl.innerHTML = girlItem.svg;
+    targetBoy.classList.remove("hit");
+    targetGirl.classList.remove("hit");
+
+    // 3. Reset runners & Speech bubble
+    runnerBoy.classList.remove("running", "crawling");
+    runnerGirl.classList.remove("running", "crawling");
+    toastOverlay.style.display = "none";
+
+    // 4. Show the theater modal
+    theater.style.display = "flex";
+
+    // 5. Trigger crawl run after 500ms
+    setTimeout(() => {
+      runnerBoy.classList.add("running", "crawling");
+      runnerGirl.classList.add("running", "crawling");
+    }, 500);
+
+    // 6. When runners reach targets (after 3500ms of transit, total 4000ms)
+    setTimeout(() => {
+      runnerBoy.classList.remove("crawling");
+      runnerGirl.classList.remove("crawling");
+
+      // Bounce targets
+      targetBoy.classList.add("hit");
+      targetGirl.classList.add("hit");
+
+      // Explode Confetti at each lane's target position
+      const rectBoy = targetBoy.getBoundingClientRect();
+      const rectGirl = targetGirl.getBoundingClientRect();
+      
+      const xBoy = (rectBoy.left + rectBoy.width / 2) / window.innerWidth;
+      const yBoy = (rectBoy.top + rectBoy.height / 2) / window.innerHeight;
+      const xGirl = (rectGirl.left + rectGirl.width / 2) / window.innerWidth;
+      const yGirl = (rectGirl.top + rectGirl.height / 2) / window.innerHeight;
+
+      // Confetti burst for Boy
+      confetti({
+        particleCount: 50,
+        spread: 40,
+        origin: { x: xBoy, y: yBoy }
+      });
+
+      // Confetti burst for Girl
+      confetti({
+        particleCount: 50,
+        spread: 40,
+        origin: { x: xGirl, y: yGirl }
+      });
+
+      // Show localized hit toast
+      const boyLabel = dict[boyItem.labelKey] || boyItem.label;
+      const girlLabel = dict[girlItem.labelKey] || girlItem.label;
+
+      const boyToast = (dict.crawl_boy_reached || "哥哥抓到了 {item}！").replace("{item}", boyLabel);
+      const girlToast = (dict.crawl_girl_reached || "妹妹抓到了 {item}！").replace("{item}", girlLabel);
+
+      toastText.innerText = `${boyToast}\n${girlToast}`;
+      toastOverlay.style.display = "block";
+    }, 4000);
+
+    // 7. Complete and exit theater (after 6000ms total)
+    setTimeout(() => {
+      // Fade out theater smoothly
+      theater.style.transition = "opacity 0.4s ease";
+      theater.style.opacity = "0";
+
+      setTimeout(() => {
+        theater.style.display = "none";
+        theater.style.opacity = "1";
+        theater.style.transition = "";
+        if (onComplete) onComplete();
+      }, 400);
+    }, 6000);
+  }
 
   const revoteBtn = document.getElementById("revote-btn");
 

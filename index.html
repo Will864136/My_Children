@@ -573,6 +573,90 @@
       <p data-i18n="footer_wish">期待您的蒞臨！</p>
     </footer>
 
+  <!-- 3D Crawling Theater Modal -->
+  <div id="crawling-theater" class="crawling-modal" style="display: none;">
+    <div class="crawling-theater-content">
+      <h3 class="crawling-title" data-i18n="crawl_title">雙寶抓週大預測進行中... 👶🏻👶🏻</h3>
+      
+      <!-- Flat Up-view Stage with Cheering Spectators -->
+      <div class="mat-stage">
+        
+        <!-- Cheering Spectators around the mat -->
+        <div class="spectator spec-grandma">👵🏻🙌<span class="cheer-particle">❤️</span></div>
+        <div class="spectator spec-grandpa">👴🏻👏<span class="cheer-particle">🎉</span></div>
+        <div class="spectator spec-aunt">👩🏻🎉<span class="cheer-particle">✨</span></div>
+        <div class="spectator spec-uncle">🧑🏻‍🦰📣<span class="cheer-particle">🎈</span></div>
+        <div class="spectator spec-bear">🐻❤️<span class="cheer-particle">👏</span></div>
+        <div class="spectator spec-bunny">🐰✨<span class="cheer-particle">🙌</span></div>
+
+        <!-- The Circular Zhuazhou Mat -->
+        <div class="zhuazhou-mat">
+          
+          <!-- Mat Center Decoration (Starting Area) -->
+          <div class="mat-center-ring"></div>
+          
+          <!-- Left Target Item (Boy prediction, placed top-left edge of the mat) -->
+          <div class="target-item-wrapper boy-target">
+            <div class="item-shadow"></div>
+            <div class="target-item" id="target-boy">
+              <!-- SVG item injected dynamically by JS -->
+            </div>
+          </div>
+          
+          <!-- Right Target Item (Girl prediction, placed top-right edge of the mat) -->
+          <div class="target-item-wrapper girl-target">
+            <div class="item-shadow"></div>
+            <div class="target-item" id="target-girl">
+              <!-- SVG item injected dynamically by JS -->
+            </div>
+          </div>
+          
+          <!-- Runner Boy (Jasper, starts near center, crawls to top-left target) -->
+          <div class="baby-runner" id="runner-boy">
+            <div class="baby-body-wrapper">
+              <div class="baby-shadow"></div>
+              <div class="baby-papercut boy-avatar">
+                <img src="new/son/S__63488023_0.jpg" alt="Jasper" class="crawling-baby-img">
+              </div>
+              <div class="baby-mickey-ears">
+                <svg viewBox="0 0 120 60" width="48" height="24">
+                  <circle cx="30" cy="25" r="22" fill="#2C2A29" stroke="#E5E7EB" stroke-width="1.5" />
+                  <circle cx="90" cy="25" r="22" fill="#2C2A29" stroke="#E5E7EB" stroke-width="1.5" />
+                  <path d="M 15,55 Q 60,35 105,55" fill="none" stroke="#2C2A29" stroke-width="4" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <span class="runner-name">Jasper</span>
+          </div>
+          
+          <!-- Runner Girl (Serena, starts near center, crawls to top-right target) -->
+          <div class="baby-runner" id="runner-girl">
+            <div class="baby-body-wrapper">
+              <div class="baby-shadow"></div>
+              <div class="baby-papercut girl-avatar">
+                <img src="new/daughter/S__63488025_0.jpg" alt="Serena" class="crawling-baby-img">
+              </div>
+              <div class="baby-kitty-bow">
+                <svg viewBox="0 0 100 100" width="30" height="30">
+                  <path d="M 35,50 C 20,40 10,55 20,65 C 30,75 40,60 45,55 Z" fill="#FF8DA1" stroke="#FF5376" stroke-width="2" />
+                  <path d="M 65,50 C 80,40 90,55 80,65 C 70,75 60,60 55,55 Z" fill="#FF8DA1" stroke="#FF5376" stroke-width="2" />
+                  <circle cx="50" cy="55" r="12" fill="#FF4B6E" stroke="#E02047" stroke-width="2" />
+                </svg>
+              </div>
+            </div>
+            <span class="runner-name">Serena</span>
+          </div>
+          
+        </div>
+      </div>
+      
+      <!-- Success Text Cloud (Toast) -->
+      <div class="crawling-toast-overlay" id="crawling-toast-overlay" style="display:none;">
+        <div class="crawling-toast-bubble">
+          <p id="crawling-toast-text"></p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="app.js"></script>
