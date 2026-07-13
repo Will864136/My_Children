@@ -1856,12 +1856,25 @@ function initAdminBackOffice() {
   }
 
   clearBtn.addEventListener("click", () => {
-    const clearConfirmMsg = currentLang === 'zh-TW'
-      ? "確定要清空本機的所有親友回條資料嗎？此操作不可逆！"
-      : "Are you sure you want to clear all local RSVPs? This action cannot be undone!";
-    if (confirm(clearConfirmMsg)) {
-      localStorage.removeItem(RSVPS_KEY);
-      loadAdminDashboardData();
+    const pwPrompt = currentLang === 'zh-TW'
+      ? "請輸入管理員清空密碼以執行此操作："
+      : "Please enter the admin clear password to proceed:";
+    const inputPw = prompt(pwPrompt);
+
+    if (inputPw === null) return; // User cancelled prompt
+
+    if (inputPw === "20250713") {
+      const clearConfirmMsg = currentLang === 'zh-TW'
+        ? "確定要清空本機的所有親友回條資料嗎？此操作不可逆！"
+        : "Are you sure you want to clear all local RSVPs? This action cannot be undone!";
+      if (confirm(clearConfirmMsg)) {
+        localStorage.removeItem(RSVPS_KEY);
+        loadAdminDashboardData();
+      }
+    } else {
+      alert(currentLang === 'zh-TW'
+        ? "密碼錯誤，無法清空資料！"
+        : "Incorrect password, cannot clear data!");
     }
   });
 
