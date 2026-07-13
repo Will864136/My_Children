@@ -265,7 +265,9 @@ const i18nDict = {
     video_subtitle: "點擊觀看隆隆和心心學走路的可愛瞬間！",
     crawl_title: "雙寶抓週大預測進行中... 👶🏻👶🏻",
     crawl_boy_reached: "哥哥抓到了 {item}！",
-    crawl_girl_reached: "妹妹抓到了 {item}！"
+    crawl_girl_reached: "妹妹抓到了 {item}！",
+    nickname_story_badge: "隆隆小名的由來",
+    nickname_story_content: "馮家按輩份取名，中間那個字是家道隆昌，我爸是馮家英，我是馮道誠，照理來說我兒子應該是馮隆什麼，但怎麼算都算不出好名字，最後取名馮宣翰，但小名就叫隆隆，他們屬蛇，小龍，所以也是龍龍"
   },
   "en": {
     doc_title: "👶🏻👶🏻 Jasper & Serena 1st Birthday Party | New Invitation",
@@ -404,7 +406,9 @@ const i18nDict = {
     video_subtitle: "Click to watch Jasper & Serena taking their first steps!",
     crawl_title: "Zhuazhou Prediction Race... 👶🏻👶🏻",
     crawl_boy_reached: "Jasper grabbed the {item}!",
-    crawl_girl_reached: "Serena grabbed the {item}!"
+    crawl_girl_reached: "Serena grabbed the {item}!",
+    nickname_story_badge: "Origin of \"Longlong\"",
+    nickname_story_content: "The Feng family names children based on generation hierarchy, following the phrase \"Jia Dao Long Chang\" (家道隆昌 - family prosperity). My father is Feng Jiaying (馮家英), I am Feng Daocheng (馮道誠), so logically my son should have \"Long\" (隆) as his middle character. However, we couldn't find a naming combination that felt right. In the end, we named him Feng Xuanhan (馮宣翰), but nickname him \"Longlong\" (隆隆) to preserve his generational character. Also, because they are born in the Year of the Snake (traditionally called \"little dragon\" in Chinese culture), he is also nicknamed \"Longlong\" (龍龍/Little Dragon)!"
   },
   "ja": {
     doc_title: "👶🏻👶🏻 Jasper & Serena 1歳お誕生日会 | 新しい招待状",
@@ -543,7 +547,9 @@ const i18nDict = {
     video_subtitle: "JasperとSerenaが歩く練習をしている可愛い姿をご覧ください！",
     crawl_title: "選び取り（抓週）競争中... 👶🏻👶🏻",
     crawl_boy_reached: "Jasperくんが {item} を選びました！",
-    crawl_girl_reached: "Serenaちゃんが {item} を選びました！"
+    crawl_girl_reached: "Serenaちゃんが {item} を選びました！",
+    nickname_story_badge: "「隆隆（ロンロン）」の由来",
+    nickname_story_content: "馮家では世代（輩分）に基づいて命名する伝統があり、祖父の代が「家（Jia）」、父の代が「道（Dao）」、そして息子の代は「家道隆昌」の四字熟語から「隆（Long）」の字を真ん中に使うことになっていました。しかし、姓名判断やバランスを考慮した結果、最終的に「馮宣翰（Feng Xuanhan）」と名付けました。それでも伝統を引き継ぐため、小名（ニックネーム）を「隆隆（ロンロン）」と呼んでいます。また、双子は巳年（ヘビ年＝中国では『小龍』と呼ばれる）生まれであるため、「龍龍」という意味も込められています。"
   },
   "th": {
     doc_title: "👶🏻👶🏻 ปาร์ตี้วันเกิด 1 ขวบ ของ Jasper & Serena | การ์ดเชิญใหม่",
@@ -682,7 +688,9 @@ const i18nDict = {
     video_subtitle: "คลิกชมความน่ารักของ Jasper และ Serena ตอนหัดเดินกันนะคะ!",
     crawl_title: "การแข่งขันคลานจับของกำลังเริ่มขึ้น... 👶🏻👶🏻",
     crawl_boy_reached: "Jasper หยิบได้ {item}!",
-    crawl_girl_reached: "Serena หยิบได้ {item}!"
+    crawl_girl_reached: "Serena หยิบได้ {item}!",
+    nickname_story_badge: "ที่มาของชื่อเล่น \"หลงหลง\"",
+    nickname_story_content: "ตระกูลเฝิงตั้งชื่อตามรุ่นตระกูล โดยเรียงตามวลีอักษร 'Jia Dao Long Chang' (家道隆昌 - ความเจริญรุ่งเรืองของตระกูล) คุณพ่อของผมคือ เฝิงเจียอิง (馮家英) ส่วนตัวผมคือ เฝิงเต้าเฉิง (馮道誠) ตามหลักแล้ว ลูกชายของผมควรมีตัวอักษรกลางเป็น 'Long' (隆) แต่หลังจากคำนวณชื่อตามโหราศาสตร์แล้ว ไม่ว่าจะตั้งอย่างไรก็ไม่ลงตัว สุดท้ายจึงตั้งชื่อจริงว่า เฝิงเซวียนฮั่น (馮宣翰) แต่ยังคงสืบทอดอักษรรุ่นด้วยการตั้งชื่อเล่นว่า 'หลงหลง' (隆隆 - Longlong) นอกจากนี้พวกเขายังเกิดในปีมะเส็ง (งูเล็ก ซึ่งในวัฒนธรรมจีนเรียกว่า มังกรน้อย - 小龍) ชื่อนี้จึงพ้องเสียงกับคำว่ามังกร 'หลงหลง' (龍龍) อีกด้วย!"
   },
   "it": {
     doc_title: "👶🏻👶🏻 1° Compleanno di Jasper & Serena | Nuovo Invito",
@@ -821,7 +829,9 @@ const i18nDict = {
     video_subtitle: "Clicca per guardare Jasper e Serena mentre fanno i loro primi passi!",
     crawl_title: "Zhuazhou corsa in corso... 👶🏻👶🏻",
     crawl_boy_reached: "Jasper ha afferrato il/la {item}!",
-    crawl_girl_reached: "Serena ha afferrato il/la {item}!"
+    crawl_girl_reached: "Serena ha afferrato il/la {item}!",
+    nickname_story_badge: "L'origine di \"Longlong\"",
+    nickname_story_content: "La famiglia Feng segue la tradizione di nominare i figli in base alle generazioni, seguendo la frase di buon auspicio \"Jia Dao Long Chang\" (家道隆昌 - prosperità della famiglia). Mio padre è Feng Jiaying (馮家英), io sono Feng Daocheng (馮道誠), quindi logicamente mio figlio avrebbe dovuto avere \"Long\" (隆) come carattere centrale. Tuttavia, non riuscendo a calcolare un nome di buon auspicio con quel carattere, lo abbiamo chiamato Feng Xuanhan (馮宣翰), mantenendo però il suo carattere generazionale nel soprannome \"Longlong\" (隆隆). Inoltre, essendo nato nell'anno del Serpente (tradizionalmente chiamato \"Piccolo Drago\" nella cultura cinese), viene anche chiamato affettuosamente \"Longlong\" (龍龍 - Piccolo Drago)!"
   }
 };
 
