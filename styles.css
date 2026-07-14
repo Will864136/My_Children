@@ -1930,24 +1930,27 @@ footer p {
 /* Flat Bird's-eye View Mat Stage */
 .mat-stage {
   width: 100%;
-  height: 420px;
+  height: 400px;
   background: #FFFBF5;
   border-radius: 35px;
   box-shadow: inset 0 4px 15px rgba(0,0,0,0.02), var(--shadow-medium);
   border: 4px dashed var(--color-gold-light);
   overflow: hidden;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 20px;
+  gap: 20px;
   position: relative;
 }
 
 .zhuazhou-mat {
   position: relative;
-  width: 360px;
-  height: 360px;
+  width: 320px;
+  height: 320px;
   background-color: #FFF2E6;
-  border: 6px dashed #FFD1A9;
+  border: 5px dashed #FFD1A9;
   border-radius: 50%;
   box-shadow: 0 8px 24px rgba(255, 209, 169, 0.2);
   display: flex;
@@ -1955,76 +1958,71 @@ footer p {
   justify-content: center;
 }
 
+.zhuazhou-mat.girl-mat {
+  background-color: #FFF0F2;
+  border-color: #FFA2A2;
+  box-shadow: 0 8px 24px rgba(255, 162, 162, 0.15);
+}
+
 .mat-center-ring {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 130px;
-  height: 130px;
+  width: 80px;
+  height: 80px;
   border: 2px dashed rgba(255, 162, 162, 0.4);
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.3);
   pointer-events: none;
 }
 
-/* Target items placed on top-left and top-right edge of mat */
-.target-item-wrapper {
+.boy-mat .mat-center-ring {
+  border-color: rgba(167, 243, 208, 0.6);
+}
+
+/* Dynamically injected items wrapper */
+.playmat-items-container {
   position: absolute;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.playmat-stage-item {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%);
   z-index: 10;
-}
-
-.boy-target {
-  top: 18%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-}
-
-.girl-target {
-  top: 18%;
-  left: 76%;
-  transform: translate(-50%, -50%);
-}
-
-.target-item {
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
-  background-color: #FFFFFF;
-  border: 3px solid var(--color-gold);
-  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.target-item svg {
-  width: 40px;
-  height: 40px;
-}
-
-.item-shadow {
-  position: absolute;
-  bottom: -6px;
-  width: 50px;
-  height: 8px;
-  background: rgba(212, 175, 55, 0.15);
   border-radius: 50%;
-  filter: blur(1.5px);
-  z-index: 1;
-  animation: shadow-glow 1.5s infinite alternate ease-in-out;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 2px solid #F3F4F6;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
 }
 
-@keyframes shadow-glow {
-  0% { transform: scale(0.9); opacity: 0.2; }
-  100% { transform: scale(1.1); opacity: 0.4; }
+.playmat-stage-item svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.playmat-stage-item.hit {
+  animation: item-bounce 0.6s ease;
+  border-color: var(--color-gold);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.45);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+@keyframes item-bounce {
+  0%, 100% { transform: translate(-50%, -50%) scale(1.2); }
+  50% { transform: translate(-50%, -65%) scale(1.3); }
 }
 
 /* Runner Baby Papercut Style */
@@ -2042,27 +2040,16 @@ footer p {
 /* Starting positions (center area of playmat) */
 #runner-boy {
   top: 50%;
-  left: 38%;
+  left: 50%;
   transform: translate(-50%, -50%);
   transition: top 3.5s cubic-bezier(0.4, 0, 0.2, 1), left 3.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #runner-girl {
   top: 50%;
-  left: 58%;
+  left: 50%;
   transform: translate(-50%, -50%);
   transition: top 3.5s cubic-bezier(0.4, 0, 0.2, 1), left 3.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Diagonal crawling outwards to targets */
-#runner-boy.running {
-  top: 18%;
-  left: 20%;
-}
-
-#runner-girl.running {
-  top: 18%;
-  left: 76%;
 }
 
 .baby-body-wrapper {
@@ -2454,5 +2441,114 @@ footer p {
     padding: 3px 12px;
     margin-top: 10px;
     margin-bottom: 8px;
+  }
+}
+
+/* Dual Playmats Responsive Styles */
+@media (max-width: 768px) {
+  .mat-stage {
+    height: 320px;
+    padding: 15px;
+    gap: 15px;
+  }
+  .zhuazhou-mat {
+    width: 220px;
+    height: 220px;
+    border-width: 3.5px;
+  }
+  .mat-center-ring {
+    width: 55px;
+    height: 55px;
+  }
+  .playmat-stage-item {
+    width: 30px;
+    height: 30px;
+  }
+  .playmat-stage-item svg {
+    width: 16px;
+    height: 16px;
+  }
+  .baby-runner {
+    width: 55px;
+    height: 72px;
+  }
+  .baby-body-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+  .baby-papercut {
+    width: 40px;
+    height: 40px;
+  }
+  .baby-mickey-ears {
+    top: -9px;
+    width: 30px;
+    height: 15px;
+  }
+  .baby-kitty-bow {
+    top: -5px;
+    right: -2px;
+    width: 18px;
+    height: 18px;
+  }
+  .baby-kitty-bow svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mat-stage {
+    height: 230px;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 20px;
+  }
+  .zhuazhou-mat {
+    width: 155px;
+    height: 155px;
+    border-width: 2.5px;
+  }
+  .mat-center-ring {
+    width: 40px;
+    height: 40px;
+  }
+  .playmat-stage-item {
+    width: 22px;
+    height: 22px;
+  }
+  .playmat-stage-item svg {
+    width: 12px;
+    height: 12px;
+  }
+  .baby-runner {
+    width: 38px;
+    height: 52px;
+  }
+  .baby-body-wrapper {
+    width: 30px;
+    height: 30px;
+  }
+  .baby-papercut {
+    width: 26px;
+    height: 26px;
+  }
+  .baby-mickey-ears {
+    top: -7px;
+    width: 20px;
+    height: 10px;
+  }
+  .baby-kitty-bow {
+    top: -4px;
+    right: -1px;
+    width: 12px;
+    height: 12px;
+  }
+  .baby-kitty-bow svg {
+    width: 12px;
+    height: 12px;
+  }
+  .runner-name {
+    font-size: 0.65rem;
   }
 }

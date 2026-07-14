@@ -1210,12 +1210,10 @@ function initPredictionGame() {
     const theater = document.getElementById("crawling-theater");
     const runnerBoy = document.getElementById("runner-boy");
     const runnerGirl = document.getElementById("runner-girl");
-    const targetBoy = document.getElementById("target-boy");
-    const targetGirl = document.getElementById("target-girl");
     const toastOverlay = document.getElementById("crawling-toast-overlay");
     const toastText = document.getElementById("crawling-toast-text");
 
-    if (!theater || !runnerBoy || !runnerGirl || !targetBoy || !targetGirl) {
+    if (!theater || !runnerBoy || !runnerGirl) {
       if (onComplete) onComplete();
       return;
     }
@@ -1231,24 +1229,82 @@ function initPredictionGame() {
       return;
     }
 
-    // 2. Render item SVGs at the target endpoints
-    targetBoy.innerHTML = boyItem.svg;
-    targetGirl.innerHTML = girlItem.svg;
-    targetBoy.classList.remove("hit");
-    targetGirl.classList.remove("hit");
+    // 2. Render all 10 candidate items on boy's and girl's playmats in circles
+    const radius = 38; // Position radius in %
+    
+    const boyItemsContainer = document.getElementById("boy-playmat-items");
+    if (boyItemsContainer) {
+      boyItemsContainer.innerHTML = '';
+      zhuazhouItems.forEach((item, index) => {
+        // Rotate by -90 degrees so first item starts at top-center
+        const angle = (index * 36 - 90) * Math.PI / 180;
+        const left = 50 + radius * Math.cos(angle);
+        const top = 50 + radius * Math.sin(angle);
+        
+        const itemEl = document.createElement("div");
+        itemEl.className = "playmat-stage-item";
+        itemEl.id = `boy-stage-item-${item.id}`;
+        itemEl.style.left = `${left}%`;
+        itemEl.style.top = `${top}%`;
+        itemEl.innerHTML = item.svg;
+        boyItemsContainer.appendChild(itemEl);
+      });
+    }
 
-    // 3. Reset runners & Speech bubble
-    runnerBoy.classList.remove("running", "crawling");
-    runnerGirl.classList.remove("running", "crawling");
+    const girlItemsContainer = document.getElementById("girl-playmat-items");
+    if (girlItemsContainer) {
+      girlItemsContainer.innerHTML = '';
+      zhuazhouItems.forEach((item, index) => {
+        const angle = (index * 36 - 90) * Math.PI / 180;
+        const left = 50 + radius * Math.cos(angle);
+        const top = 50 + radius * Math.sin(angle);
+        
+        const itemEl = document.createElement("div");
+        itemEl.className = "playmat-stage-item";
+        itemEl.id = `girl-stage-item-${item.id}`;
+        itemEl.style.left = `${left}%`;
+        itemEl.style.top = `${top}%`;
+        itemEl.innerHTML = item.svg;
+        girlItemsContainer.appendChild(itemEl);
+      });
+    }
+
+    // 3. Reset runners back to center (50%, 50%) & Speech bubble
+    runnerBoy.style.left = "50%";
+    runnerBoy.style.top = "50%";
+    runnerBoy.classList.remove("crawling");
+
+    runnerGirl.style.left = "50%";
+    runnerGirl.style.top = "50%";
+    runnerGirl.classList.remove("crawling");
+
     toastOverlay.style.display = "none";
+
+    // Calculate target coordinates for selected items (slightly inside placement radius)
+    const crawlRadius = 33; 
+    
+    const boyIndex = zhuazhouItems.findIndex(i => i.id === boyItemId);
+    const boyAngle = (boyIndex * 36 - 90) * Math.PI / 180;
+    const boyTargetLeft = 50 + crawlRadius * Math.cos(boyAngle);
+    const boyTargetTop = 50 + crawlRadius * Math.sin(boyAngle);
+
+    const girlIndex = zhuazhouItems.findIndex(i => i.id === girlItemId);
+    const girlAngle = (girlIndex * 36 - 90) * Math.PI / 180;
+    const girlTargetLeft = 50 + crawlRadius * Math.cos(girlAngle);
+    const girlTargetTop = 50 + crawlRadius * Math.sin(girlAngle);
 
     // 4. Show the theater modal
     theater.style.display = "flex";
 
     // 5. Trigger crawl run after 500ms
     setTimeout(() => {
-      runnerBoy.classList.add("running", "crawling");
-      runnerGirl.classList.add("running", "crawling");
+      runnerBoy.style.left = `${boyTargetLeft}%`;
+      runnerBoy.style.top = `${boyTargetTop}%`;
+      runnerBoy.classList.add("crawling");
+
+      runnerGirl.style.left = `${girlTargetLeft}%`;
+      runnerGirl.style.top = `${girlTargetTop}%`;
+      runnerGirl.classList.add("crawling");
     }, 500);
 
     // 6. When runners reach targets (after 3500ms of transit, total 4000ms)
@@ -1256,13 +1312,15 @@ function initPredictionGame() {
       runnerBoy.classList.remove("crawling");
       runnerGirl.classList.remove("crawling");
 
-      // Bounce targets
-      targetBoy.classList.add("hit");
-      targetGirl.classList.add("hit");
+      // Bounce target items
+      const targetBoyEl = document.getElementById(`boy-stage-item-${boyItemId}`);
+      const targetGirlEl = document.getElementById(`girl-stage-item-${girlItemId}`);
+      if (targetBoyEl) targetBoyEl.classList.add("hit");
+      if (targetGirlEl) targetGirlEl.classList.add("hit");
 
       // Explode Confetti at each lane's target position
-      const rectBoy = targetBoy.getBoundingClientRect();
-      const rectGirl = targetGirl.getBoundingClientRect();
+      const rectBoy = targetBoyEl ? targetBoyEl.getBoundingClientRect() : { left: 0, top: 0, width: 0, height: 0 };
+      const rectGirl = targetGirlEl ? targetGirlEl.getBoundingClientRect() : { left: 0, top: 0, width: 0, height: 0 };
       
       const xBoy = (rectBoy.left + rectBoy.width / 2) / window.innerWidth;
       const yBoy = (rectBoy.top + rectBoy.height / 2) / window.innerHeight;

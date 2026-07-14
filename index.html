@@ -600,29 +600,13 @@
         <div class="spectator spec-bear">🐻❤️<span class="cheer-particle">👏</span></div>
         <div class="spectator spec-bunny">🐰✨<span class="cheer-particle">🙌</span></div>
 
-        <!-- The Circular Zhuazhou Mat -->
-        <div class="zhuazhou-mat">
-          
-          <!-- Mat Center Decoration (Starting Area) -->
+        <!-- Left Playmat (Boy) -->
+        <div class="zhuazhou-mat boy-mat" id="boy-playmat">
           <div class="mat-center-ring"></div>
+          <!-- 10 Items will be injected dynamically by JS -->
+          <div class="playmat-items-container" id="boy-playmat-items"></div>
           
-          <!-- Left Target Item (Boy prediction, placed top-left edge of the mat) -->
-          <div class="target-item-wrapper boy-target">
-            <div class="item-shadow"></div>
-            <div class="target-item" id="target-boy">
-              <!-- SVG item injected dynamically by JS -->
-            </div>
-          </div>
-          
-          <!-- Right Target Item (Girl prediction, placed top-right edge of the mat) -->
-          <div class="target-item-wrapper girl-target">
-            <div class="item-shadow"></div>
-            <div class="target-item" id="target-girl">
-              <!-- SVG item injected dynamically by JS -->
-            </div>
-          </div>
-          
-          <!-- Runner Boy (Jasper, starts near center, crawls to top-left target) -->
+          <!-- Runner Boy (Jasper, starts at center) -->
           <div class="baby-runner" id="runner-boy">
             <div class="baby-body-wrapper">
               <div class="baby-shadow"></div>
@@ -639,8 +623,15 @@
             </div>
             <span class="runner-name">Jasper</span>
           </div>
+        </div>
+
+        <!-- Right Playmat (Girl) -->
+        <div class="zhuazhou-mat girl-mat" id="girl-playmat">
+          <div class="mat-center-ring"></div>
+          <!-- 10 Items will be injected dynamically by JS -->
+          <div class="playmat-items-container" id="girl-playmat-items"></div>
           
-          <!-- Runner Girl (Serena, starts near center, crawls to top-right target) -->
+          <!-- Runner Girl (Serena, starts at center) -->
           <div class="baby-runner" id="runner-girl">
             <div class="baby-body-wrapper">
               <div class="baby-shadow"></div>
@@ -657,7 +648,6 @@
             </div>
             <span class="runner-name">Serena</span>
           </div>
-          
         </div>
       </div>
       
